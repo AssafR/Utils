@@ -1,61 +1,85 @@
 ﻿from subprocess import Popen, PIPE
 import sys
-import re
-import string
 import time
 
-def log(f,message):
-   if f:
-       f.write(message+ "\n");
-       print(message+ "\n");
+# Script to read a series of lines containing:
+#  RecordingTime(hh:mm) Recording_Name(str)
+# And sequentially send to a channel-change script + record using NPVR
 
-       
-def parseTime(time):
+CHANNEL_FOR_SKIPPING = 996
+MINS_IN_HOUR = 60
+CHANNEL_FOR_OTHER_RECORDINGS = 997
+CHANNEL_FOR_FIRST_RECORDING = 995
+EXTRA_MINUTES_RECORD = 2
+DEFAULT_RECORDING_NAME = "Max"
+DEFAULT_WAIT_EXTRA = 90
+SCHEDULER_COMMAND = "\"C:\\Program Files (x86)\\NPVR\\schedule\""
+SCHEDULER_PARAMS = " -start now -name \"%s\" -pre 0 -post 0"
+CHANNEL_PARAMS = " -channel %d"
+LENGTH_PARAMS = " -seconds %d"
+
+
+def log(f, message):
+    if f:
+        f.write(message + "\n");
+        print(message + "\n");
+
+
+def parse_time_and_name(line):
+    split_line = line.split()
+    time = split_line[0]
+
+
     if (":" in time):
         hours, minutes = time.split(':')
-        return int(hours) * 60 + int(minutes);
-    return int(time);    
+        time_sec = int(hours) * MINS_IN_HOUR + int(minutes)
+    else:
+        time_sec = int(time)
+
+    split_line[0] = time_sec
+    return split_line;
+
 
 def send(command):
-  log(f,"Going to send: " + command);
-  pipe = Popen(command, stdout=PIPE, stderr=PIPE)
-  while True:
-     line = pipe.stdout.readline()
-     if not line:
-        break
-     log(f,"Result=" + str(line) );
+    log(f, "Going to send: " + command);
+    pipe = Popen(command, stdout=PIPE, stderr=PIPE)
+    while True:
+        line = pipe.stdout.readline()
+        if not line:
+            break
+        log(f, "Result=" + str(line));
 
-     
-f = open('E:\\DriveE\\Downloads\\PVR\\code2.log','a') # Log file, to disable replace with: f=None
+
+f = open('E:\\DriveE\\Downloads\\PVR\\code2.log', 'a')  # Log file, to disable replace with: f=None
 # "C:\Program Files (x86)\NPVR\schedule" -channel 3 -start now -seconds 60 -name "Max" -pre 0 -post 0
-scheduler = "\"C:\\Program Files (x86)\\NPVR\\schedule\""
-params = " -start now -name \"Max\" -pre 0 -post 0"
-channelParam = " -channel "
-lengthParam  = " -seconds "
 
-args = sys.argv[1:] # Input parameter
+args = sys.argv[1:]  # Input parameter
 with open(args[0]) as input:
     content = input.readlines()
 content = [x.strip() for x in content if x and (not x.isspace())]
-times   = [parseTime(x) for x in content]
+times = [parse_time_and_name(x) for x in content]
 
 first_one = True;
-for t in times:
-  print("Time=" + str(t) + " min");
-  if (t==0):
-    channel=996
-  else:
-    if first_one:
-        first_one = False;
-        channel = 995;
+for time_name in times:
+    recording_time = time_name[0]
+    if (recording_time == 0):
+        channel = CHANNEL_FOR_SKIPPING
     else:
-        channel=997
-  seconds = (t+2)*60
-  len  = lengthParam  + str(seconds)
-  chan = channelParam + str(channel)
-  command = scheduler + params + chan + len
-  send(command);
-  wait_time = (seconds+90)
-  print("Waiting " + str(wait_time))
-  time.sleep(wait_time)
-  
+        if first_one:
+            first_one = False;
+            channel = CHANNEL_FOR_FIRST_RECORDING
+        else:
+            channel = CHANNEL_FOR_OTHER_RECORDINGS
+
+    seconds = (recording_time + EXTRA_MINUTES_RECORD) * MINS_IN_HOUR
+    if (len(time_name) < 2):
+        name = DEFAULT_RECORDING_NAME
+    else:
+        name = time_name[1]
+
+    command = (SCHEDULER_COMMAND + SCHEDULER_PARAMS + CHANNEL_PARAMS + LENGTH_PARAMS) % (name, channel, seconds)
+    print("Command=[" + command + "]")
+    send(command);
+    wait_time = (seconds + DEFAULT_WAIT_EXTRA)
+    print("Waiting " + str(wait_time))
+    time.sleep(wait_time)
