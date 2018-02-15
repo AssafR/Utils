@@ -36,7 +36,7 @@ lengthParam  = " -seconds "
 args = sys.argv[1:] # Input parameter
 with open(args[0]) as input:
     content = input.readlines()
-content = [x.strip() for x in content]
+content = [x.strip() for x in content if x and (not x.isspace())]
 times   = [parseTime(x) for x in content]
 
 first_one = True;
