@@ -62,20 +62,23 @@ times = [parse_time_and_name(x) for x in content]
 first_one = True;
 for time_name in times:
     recording_time = time_name[0]
-    if (recording_time == 0):
-        channel = CHANNEL_FOR_SKIPPING
-    else:
-        if first_one:
-            first_one = False;
-            channel = CHANNEL_FOR_FIRST_RECORDING
-        else:
-            channel = CHANNEL_FOR_OTHER_RECORDINGS
-
-    seconds = (recording_time + EXTRA_MINUTES_RECORD) * MINS_IN_HOUR
     if (len(time_name) < 2):
         name = DEFAULT_RECORDING_NAME
     else:
         name = time_name[1]
+
+    if first_one:
+        first_one = False;
+        channel = CHANNEL_FOR_FIRST_RECORDING
+    else:
+        channel = CHANNEL_FOR_OTHER_RECORDINGS
+
+    seconds = (recording_time + EXTRA_MINUTES_RECORD) * MINS_IN_HOUR
+
+    if (recording_time == 0):
+        channel = CHANNEL_FOR_SKIPPING
+        seconds = 10
+        
 
     command = (SCHEDULER_COMMAND + SCHEDULER_PARAMS + CHANNEL_PARAMS + LENGTH_PARAMS) % (name, channel, seconds)
     print("Command=[" + command + "]")
