@@ -54,13 +54,14 @@ for td in tds:
     results[result['ep_standard_numbering']] = result
     # print(result)
 
+
 # print("\n".join((td for td in (str(td) for td in tds))))
 
 # print(soup.prettify())
-print(results)
+# print(results)
 
 def create_insertion_command(value):
-    return(
+    return (
         f'INSERT INTO episodes VALUES\n',
         f'\n',
         f'\n',
@@ -73,15 +74,35 @@ def create_insertion_command(value):
 
 con = sqlite3.connect("snl_eps.db")
 cur = con.cursor()
+cur.execute("""DROP TABLE episodes""")
 cur.execute("""CREATE TABLE IF NOT EXISTS episodes(
                     season INTEGER,
                     ep_in_season INTEGER,
                     ep_standard_numbering TEXT PRIMARY KEY,
+                    ep_name TEXT,
                     ep_date TEXT)""")
 
-for result in results.values():
-    con.execute("""
-    INSERT INTO episodes (column1,column2 ,..)
-        VALUES( value1,	value2 ,...)
-    """)
+sql_insertion_clause = """
+    INSERT INTO episodes (season,ep_in_season,ep_standard_numbering,ep_name, ep_date)
+        VALUES(?,?,?,?,?)
+    """
 
+# for result in results.values():
+#     cur.execute("""
+#     INSERT INTO episodes (column1,column2 ,..)
+#         VALUES( value1,	value2 ,...)
+#     """)
+
+records = [(res['season'], res['ep_in_season'],
+            res['ep_standard_numbering'], res['ep_name'],
+            res['ep_date']) for res in results.values()]
+# print(records)
+
+cur.executemany(sql_insertion_clause, records)
+sql_selection_clause = """
+    SELECT * FROM episodes
+    """
+
+cur.execute(sql_selection_clause)
+records_read = cur.fetchall()
+print(records_read)
