@@ -2,6 +2,7 @@ import click
 import pathlib
 import pandas as pd
 from datetime import datetime
+import os
 
 filename_template = 'PersonList*.csv'
 
@@ -34,9 +35,10 @@ def read_output_file_or_empty(filename):
 
 def read_regular_file_to_dataframe(file):
     # Read the beginning of the file, only metadata
+    print(f'Reading file: {file}')
     df = pd.read_csv(
         str(file), sep=' ', header=None, encoding='utf_8_sig',
-        error_bad_lines=None, skiprows=(lambda x: x > 5), on_bad_lines='skip')
+        on_bad_lines='skip', skiprows=(lambda x: x > 5))
 
     # Convert the two fields into one datetime
     test_time = df.iloc[2, 2]
@@ -52,13 +54,23 @@ def read_regular_file_to_dataframe(file):
     df.insert(0, 'Time', time)
     df.insert(1, 'TestNo', test_no)
     df.columns = [c.strip() for c in df.columns]
-    return df
+    return df, time
 
 
 def process_files(previous_df, filenames):
     dfs = [previous_df]
-    for f in filenames:
-        file_df = read_regular_file_to_dataframe(f)
+    for filename in filenames:
+        file_df, filetime = read_regular_file_to_dataframe(filename)
+        # Convert datetime to format YYYY-MM-DD
+        time_YMD = filetime.strftime('%Y-%m-%d')
+        # new_filename = f'{filename.name}_{time_YMD}.csv'
+        if time_YMD not in str(filename):
+            try:
+                new_filename = filename.parent / (str(filename.stem) + '_' + time_YMD + filename.suffix)
+                filename.rename(new_filename)
+            except Exception as e:
+                print(f'Error renaming file: {filename}')
+                print(e)
         dfs.append(file_df)
     # Combine all to one dataframe
     df = pd.concat(dfs, ignore_index=True)
