@@ -1,11 +1,17 @@
+import contextlib
 import re
+from dataclasses import dataclass
 from time import sleep
+from typing import Dict, List
+from urllib.request import urlopen
 
 import requests
 from bs4 import BeautifulSoup
 from dateutil import parser
-from urllib.parse import quote
+import urllib.parse
+# from urllib.parse import quote
 import datetime
+from zoneinfo import ZoneInfo  # Python 3.9
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -13,6 +19,33 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+
+
+@dataclass
+class CinemathequeEvent:
+    header: str
+    text_description: str
+    full_description: str
+    dates: Dict[str, List[str]]
+    formatted_start_time: str
+    formatted_end_time: str
+
+    def __str__(self):
+        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
+                f"{self.dates}, {self.formatted_start_time}, {self.formatted_end_time})")
+
+    def __repr__(self):
+        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
+                f"{self.dates}, {self.formatted_start_time}, {self.formatted_end_time})")
+
+    def event_to_url(self):
+        return create_calendar_event_url(self.header, self.full_description,
+                                         self.formatted_start_time, self.formatted_end_time)
+
+
+def split_on_double_newlines(st):
+    # Split the string on two or more consecutive newlines
+    return re.split(r'\n{2,}', st)
 
 
 def extract_date(input_string):
@@ -30,6 +63,7 @@ def extract_date(input_string):
     else:
         return None
 
+
 def extract_time(input_string):
     # Define a regular expression pattern for matching time
     time_pattern = re.compile(r'\b(\d{1,2}:\d{2})\b')
@@ -44,6 +78,7 @@ def extract_time(input_string):
         return extracted_time
     else:
         return None
+
 
 def extract_with_submit_form(url):
     # Start Chrome browser
@@ -77,8 +112,7 @@ def extract_with_submit_form(url):
             # Select a time option (change the index as needed)
             time_select = Select(time_dropdown)
             dates[extracted_date] = [extract_time(time_selection.text) for time_selection in time_select.options]
-            dates[extracted_date] = [d for d in dates[extracted_date] if d!=None]
-
+            dates[extracted_date] = [d for d in dates[extracted_date] if d is not None]
 
         #
         # # # Submit the form
@@ -103,25 +137,13 @@ def extract_with_submit_form(url):
 
 
 def extract_invitation_from_html(html_content, dates):
-    event_data = {}
-
-    # Parse HTML content
-    soup = BeautifulSoup(html_content, 'html.parser')
-
-    # Extract header, description, and time
-    event_data['header'] = soup.find('div', class_='title').find('h3').get_text(strip=True)
-    event_data['text_description'] = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
-    event_data['full_description'] = soup.find('div', class_='text-wraper').get_text(strip=False)
-
-    fd = soup.find('div', class_='text-wraper')
-    event_data['header'] = fd.contents[3]
-    event_data['description'] = fd.contents[5]
+    event_data: CinemathequeEvent = extract_static_content_to_event(html_content, dates)
 
     # time_str = soup.find('div', class_='screenings-model').find('option')['value'].split('~')[0]
     # # Parse date and time using dateutil.parser
     # event_datetime = parser.parse(time_str)
 
-##
+    ##
     # date_str = \
     # soup.find('div', class_='screenings-model').find('select', id='smdate_b').find('option')['value'].split('~')[0]
     # time_option = soup.find('div', class_='screenings-model').find('select', id='smtime_b').find('option',
@@ -134,11 +156,11 @@ def extract_invitation_from_html(html_content, dates):
             if event_datetime:
                 event_datetimes.append(event_datetime)
 
-    for event_datetime in event_datetimes:
-        event_datetime_end = event_datetime + datetime.timedelta(minutes=180) if event_datetime else None
-        # Format the date and time for the Google Calendar URL
-        event_data['formatted_start_time'] = event_datetime.strftime('%Y%m%dT%H%M%S')
-        event_data['formatted_end_time'] = event_datetime_end.strftime('%Y%m%dT%H%M%S')
+    # for event_datetime in event_datetimes:
+    #     event_datetime_end = event_datetime + datetime.timedelta(minutes=180) if event_datetime else None
+    #     # Format the date and time for the Google Calendar URL
+    #     event_data['formatted_start_time'] = event_datetime.strftime('%Y%m%dT%H%M%S')
+    #     event_data['formatted_end_time'] = event_datetime_end.strftime('%Y%m%dT%H%M%S')
 
     return event_data
 
@@ -152,6 +174,39 @@ def extract_invitation_from_html(html_content, dates):
     # print("Description:", description)
     # print("Time:", event_datetime)
     # print("Google Calendar Event URL:", google_calendar_url)
+
+
+def extract_static_content_old(html_content):
+    # Parse HTML content
+    soup = BeautifulSoup(html_content, 'html.parser')
+    # Extract header, description, and time
+    event_data = {}
+    event_data['header'] = soup.find('div', class_='title').find('h3').get_text(strip=True)
+    event_data['text_description'] = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
+    event_data['full_description'] = soup.find('div', class_='text-wraper').get_text(strip=False)
+    fd = soup.find('div', class_='text-wraper')
+    event_data['header'] = fd.contents[3]
+    event_data['description'] = fd.contents[5]
+    return event_data
+
+
+def extract_static_content_to_event(html_content: str, dates) -> CinemathequeEvent:
+    # Parse HTML content
+    try:
+        soup = BeautifulSoup(html_content, 'html.parser')
+        # Extract header, description, and time
+        event_data = CinemathequeEvent()
+        event_data.header = soup.find('div', class_='title').find('h3').get_text(strip=True)
+        event_data.text_description = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
+        event_data.full_description = soup.find('div', class_='text-wraper').get_text(strip=False)
+        fd = soup.find('div', class_='text-wraper')
+        event_data.header = fd.contents[3]
+        event_data.description = fd.contents[5]
+        event_data.dates = dates
+        return event_data
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        raise e
 
 
 def extract_text_after_js(url):
@@ -183,6 +238,7 @@ def extract_text_after_js(url):
 
         # Close the browser
         driver.quit()
+        return visible_text
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -250,31 +306,98 @@ def read_web_page_headless(url):
         print(f"An error occurred: {e}")
 
 
-def read_web_page(url):
+def read_web_page(page_url):
     try:
         # Send a GET request to the URL
-        response = requests.get(url)
+        response = requests.get(page_url)
 
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Print the content of the web page
-            print(response.text)
+            return response.text
         else:
-            print(f"Error: {response.status_code}")
+            return f"Error: {response.status_code}"
 
     except Exception as e:
         print(f"An error occurred: {e}")
 
 
-# Example usage
-url = "https://www.cinema.co.il/event/%d7%94%d7%90%d7%a8%d7%93-%d7%91%d7%95%d7%99%d7%9c%d7%93-%d7%94%d7%91%d7%a8%d7%99%d7%97%d7%94/"
-# url = "https://www.cinema.co.il/event/%d7%9c%d7%a8%d7%93%d7%95%d7%a3-%d7%90%d7%97%d7%a8%d7%99-%d7%a6%d7%99%d7%99%d7%a1%d7%99%d7%a0%d7%92-%d7%90%d7%99%d7%99%d7%9e%d7%99-%d7%a4%d7%a1%d7%98%d7%99%d7%91%d7%9c-%d7%92%d7%90%d7%94/"
-# read_web_page(url)
-# read_web_page_headless(url)
-# extract_visible_text(url)
-# extract_text_after_js(url)
-# html_content = read_web_page_headless(url)
-html_content, dates = extract_with_submit_form(url)
-event = extract_invitation_from_html(html_content, dates)
-print(event)
+def make_tiny(url):
+    tiny_request_url = ('http://tinyurl.com/api-create.php?' + urllib.parse.urlencode({'url': url}))
+    with contextlib.closing(urlopen(tiny_request_url)) as response:
+        return response.read().decode('utf-8 ')
 
+
+def create_calendar_event_url(header, description, start_date, start_time):
+    # Combine date and time into a datetime object
+    # event_datetime = datetime.datetime.strptime(f"{start_date} {start_time}", "%Y-%m-%d %H:%M")
+    event_datetime = datetime.datetime.strptime(f"{start_date} {start_time}", "%d-%m-%Y %H:%M")
+    event_datetime.replace(tzinfo=ZoneInfo('Asia/Jerusalem'))  # Input is in Israel time
+    event_datetime = event_datetime.astimezone(datetime.timezone.utc)
+    # event_datetime = datetime.datetime.strptime(f"{}", "%Y%m%dT%H%M%S")
+    start_time = event_datetime.isoformat()  # event_datetime.isoformat()
+    end_time = (event_datetime + datetime.timedelta(hours=3)).isoformat()
+    # Encode the event details to be URL-safe
+    h_encoded = urllib.parse.quote(header)
+    desc_encoded = urllib.parse.quote(description)
+    # Create the URL
+    # base_url = 'https://calendar.google.com/calendar/r/eventedit'
+    # base_url = 'https://calendar.google.com/calendar/u/0/r/eventedit?'
+    base_url = 'https://www.google.com/calendar/render?action=TEMPLATE&'
+    start_time_fmt = start_time.replace('-', '').replace(':', '')
+    end_time_fmt = end_time.replace('-', '').replace(':', '')
+
+    location = 'Tel Aviv Cinematheque'
+    location = urllib.parse.quote(location)
+
+    url = f"{base_url}text={h_encoded}&dates={start_time_fmt}Z/{end_time_fmt}Z&location={location}&details={desc_encoded}"
+
+    return url
+
+
+def create_calendar_urls_for_event(event_url):
+    html_content, dates = extract_with_submit_form(event_url)
+    event = extract_invitation_from_html(html_content, dates)
+    lines = [t for t in split_on_double_newlines(event['full_description']) if t]
+    event_description = lines[0].splitlines()[0]
+    urls = []
+    for date, times in dates.items():
+        for time in times:
+            url: str = create_calendar_event_url(event_description, event['full_description'], date, time)
+            urls.append(url)
+    print("Description:", event_description)
+    print("Dates:", dates)
+    print("Full Description (HTML):", event['full_description'])
+    return urls
+
+
+# Example usage
+# url = "https://www.cinema.co.il/event/%d7%94%d7%90%d7%a8%d7%93-%d7%91%d7%95%d7%99%d7%9c%d7%93-%d7%94%d7%91%d7%a8%d7%99%d7%97%d7%94/"
+# url = "https://www.cinema.co.il/event/%d7%9c%d7%a8%d7%93%d7%95%d7%a3-%d7%90%d7%97%d7%a8%d7%99-%d7%a6%d7%99%d7%99%d7%a1%d7%99%d7%a0%d7%92-%d7%90%d7%99%d7%99%d7%9e%d7%99-%d7%a4%d7%a1%d7%98%d7%99%d7%91%d7%9c-%d7%92%d7%90%d7%94/"
+# url = "https://www.cinema.co.il/event/%d7%97%d7%aa%d7%95%d7%a0%d7%94-%d7%a4%d7%a8%d7%a1%d7%99%d7%aa-%d7%a4%d7%a1%d7%98%d7%99%d7%91%d7%9c-%d7%92%d7%90%d7%94/"
+event_url = 'https://www.cinema.co.il/event/%d7%91%d7%a2%d7%91%d7%95%d7%a8-%d7%97%d7%95%d7%a4%d7%9f-%d7%93%d7%95%d7%9c%d7%a8%d7%99%d7%9d/'
+series_url = 'https://www.cinema.co.il/%d7%9e%d7%99%d7%95%d7%92%d7%99%d7%9e%d7%91%d7%95-%d7%95%d7%a2%d7%93-%d7%a4%d7%a8%d7%a9/'
+
+
+# noinspection PyShadowingNames
+def extract_events_urls_from_series_page(event_url):
+    series_html = read_web_page_headless(series_url)
+    series_soup = BeautifulSoup(series_html, 'html.parser')
+    series_events = series_soup.find_all('a', string="לפרטים נוספים", href=True)
+    hrefs = [event['href'] for event in series_events]
+    cal_urls = []
+    for url_no, event_url in enumerate(hrefs):
+        print(f"Event: {url_no}, url:{event_url}")
+        urls = create_calendar_urls_for_event(event_url)
+        cal_urls.extend(urls)
+        if url_no > 2:
+            break
+    return cal_urls
+
+
+calendar_urls = extract_events_urls_from_series_page(event_url)
+
+for url in calendar_urls:
+    print("Click this long link to create the event:\n", url)
+    print("Click this short link to create the event:\n", make_tiny(url))
+print('---')
