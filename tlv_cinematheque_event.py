@@ -156,14 +156,14 @@ def extract_static_content_from_html_to_event(html_content: str, dates) -> Cinem
     try:
         soup = BeautifulSoup(html_content, 'html.parser')
         # Extract header, description, and time
-        event_data = CinemathequeEvent()
-        event_data.header = soup.find('div', class_='title').find('h3').get_text(strip=True)
-        event_data.text_description = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
-        event_data.full_description = soup.find('div', class_='text-wraper').get_text(strip=False)
+        header = soup.find('div', class_='title').find('h3').get_text(strip=True) # Obsolete ?
+        text_description = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
+        full_description = soup.find('div', class_='text-wraper').get_text(strip=False)
         fd = soup.find('div', class_='text-wraper')
-        event_data.header = fd.contents[3]
-        event_data.description = fd.contents[5]
-        event_data.dates = dates
+        header = fd.contents[3]
+        description = fd.contents[5]
+        dates = dates
+        event_data = CinemathequeEvent(header, text_description, full_description, dates)
         return event_data
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -229,12 +229,12 @@ def extract_datetime_from_date_and_time(start_date, start_datetime):
 def create_calendar_urls_for_event(event_url):
     html_content, dates = extract_dates_using_submit_form(event_url)
     event = extract_invitation_from_html(html_content, dates)
-    lines = [t for t in split_on_double_newlines(event['full_description']) if t]
+    lines = [t for t in split_on_double_newlines(event.full_description) if t]
     event_description = lines[0].splitlines()[0]
     urls = []
     for date, times in dates.items():
         for time in times:
-            url: str = create_calendar_event_url(event_description, event['full_description'], date, time)
+            url: str = create_calendar_event_url(event_description, event.full_description, date, time)
             urls.append(url)
     print("Description:", event_description)
     print("Dates:", dates)
