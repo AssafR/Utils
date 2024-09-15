@@ -23,7 +23,7 @@ input_file = r'T:\Cassettes Customers\Tom\Phase 14\Sample.mkv'
 
 def float_to_int(signal, bits=12):
     signal_normal = (signal - signal.min()) / (signal.max() - signal.min())
-    signal_int = (signal_normal * (2**bits)).astype(np.uint16)
+    signal_int = (signal_normal * (2**bits-1)).astype(np.uint16)
     return signal_int
 
 def calc_entropy(signal):
@@ -31,8 +31,8 @@ def calc_entropy(signal):
     return scipy.stats.entropy(counts)
 
 def calc_entropies(wavs):
+    wavs_int = wavs.astype(np.int16) # wavs_int = float_to_int(wavs)
     entropies = []
-    wavs_int = float_to_int(wavs)
     for channel_no in range(wavs_int.shape[1]):
         wav_int = wavs_int[:,channel_no]
         entropies.append(calc_entropy(wav_int))
@@ -41,7 +41,7 @@ def calc_entropies(wavs):
 audio: np.array
 rate: int
 
-rate, audio = read(input_file)
+rate, audio = read(input_file) # Audio is type int16
 print("rate: ", rate)
 first_sample = 2000000
 num_samples=1800000

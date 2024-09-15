@@ -1,11 +1,7 @@
 import contextlib
-import re
-from dataclasses import dataclass
-from typing import Dict, List
 from urllib.request import urlopen
 
 import requests
-from bs4 import BeautifulSoup
 from dateutil import parser
 import urllib.parse
 # from urllib.parse import quote
@@ -14,39 +10,11 @@ from zoneinfo import ZoneInfo  # Python 3.9
 
 
 from tlv_cinematheque_event_utils import *
-
-@dataclass
-class CinemathequeEvent:
-    header: str
-    text_description: str
-    full_description: str
-    dates: Dict[str, List[str]]
-
-    # formatted_start_time: str
-    # formatted_end_time: str
-
-    def __str__(self):
-        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
-                f"{self.dates}"
-                # f", {self.formatted_start_time}, {self.formatted_end_time})"
-                )
-
-    def __repr__(self):
-        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
-                f"{self.dates}, "
-                # f"{self.formatted_start_time}, {self.formatted_end_time})"
-                )
-
-    def event_to_url(self):
-        return create_calendar_event_url(self.header, self.full_description,
-                                         self.formatted_start_time, self.formatted_end_time)
+from tlv_cinematheque_event_utils import CinemathequeEvent
 
 
-
-
-
-def extract_invitation_from_html(html_content, dates):
-    event_data: CinemathequeEvent = extract_static_content_from_html_to_event(html_content, dates)
+def extract_invitation_from_html(html_content, dates, url=None) -> CinemathequeEvent:
+    event_data: CinemathequeEvent = extract_static_content_from_html_to_event(html_content, dates, url)
 
     # time_str = soup.find('div', class_='screenings-model').find('option')['value'].split('~')[0]
     # # Parse date and time using dateutil.parser
@@ -151,23 +119,6 @@ def read_web_page_headless(url):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-def extract_static_content_from_html_to_event(html_content: str, dates) -> CinemathequeEvent:
-    # Parse HTML content
-    try:
-        soup = BeautifulSoup(html_content, 'html.parser')
-        # Extract header, description, and time
-        header = soup.find('div', class_='title').find('h3').get_text(strip=True) # Obsolete ?
-        text_description = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
-        full_description = soup.find('div', class_='text-wraper').get_text(strip=False)
-        fd = soup.find('div', class_='text-wraper')
-        header = fd.contents[3]
-        description = fd.contents[5]
-        dates = dates
-        event_data = CinemathequeEvent(header, text_description, full_description, dates)
-        return event_data
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        raise e
 
 def read_web_page(page_url):
     try:
@@ -209,12 +160,14 @@ def create_calendar_event_url(header, description, start_date, start_datetime, e
     # base_url = 'https://calendar.google.com/calendar/u/0/r/eventedit?'
     base_url = 'https://www.google.com/calendar/render?action=TEMPLATE&'
     start_time_fmt = start_datetime.replace('-', '').replace(':', '')
-    end_time_fmt = end_time.replace('-', '').replace(':', '')
+    end_time_fmt = end_datetime.replace('-', '').replace(':', '')
 
     location = 'Tel Aviv Cinematheque'
     location = urllib.parse.quote(location)
+    add_addresses = ['yshevach@yahoo.com']
+    add_addresses_params = '&add=' + ','.join(add_addresses) if add_addresses else ''
 
-    url = f"{base_url}text={h_encoded}&dates={start_time_fmt}Z/{end_time_fmt}Z&location={location}&details={desc_encoded}"
+    url = f"{base_url}text={h_encoded}&dates={start_time_fmt}Z/{end_time_fmt}Z&location={location}&details={desc_encoded}{add_addresses_params}"
 
     return url
 
@@ -228,33 +181,37 @@ def extract_datetime_from_date_and_time(start_date, start_datetime):
 
 def create_calendar_urls_for_event(event_url):
     html_content, dates = extract_dates_using_submit_form(event_url)
-    event = extract_invitation_from_html(html_content, dates)
+    event = extract_invitation_from_html(html_content, dates, event_url)
     lines = [t for t in split_on_double_newlines(event.full_description) if t]
     event_description = lines[0].splitlines()[0]
+
+    # Insert new element at index 0 and push others onto the next index
+    event.full_description = event.full_description[0:1200] # Otherwise URL is too long
+    full_description_with_url = f'<A HREF="{event_url}">להזמנת כרטיס</A><br/>{event.full_description}'
     urls = []
     for date, times in dates.items():
         for time in times:
-            url: str = create_calendar_event_url(event_description, event.full_description, date, time)
+            url: str = create_calendar_event_url(event_description, full_description_with_url, date, time, event_url)
             urls.append(url)
     print("Description:", event_description)
     print("Dates:", dates)
-    print("Full Description (HTML):", event['full_description'])
+    # print("Full Description (HTML):", event.full_description)
     return urls
 
 
 # noinspection PyShadowingNames
 def extract_events_urls_from_series_page(event_url):
-    series_html = read_web_page_headless(series_url_1)
+    series_html = read_web_page_headless(event_url)
     series_soup = BeautifulSoup(series_html, 'html.parser')
     series_events = series_soup.find_all('a', string="לפרטים נוספים", href=True)
-    hrefs = [event['href'] for event in series_events]
+    hrefs = set(event['href'] for event in series_events)
     cal_urls = []
     for url_no, event_url in enumerate(hrefs):
         print(f"Event: {url_no}, url:{event_url}")
         urls = create_calendar_urls_for_event(event_url)
         cal_urls.extend(urls)
-        if url_no > 2:
-            break
+        # if url_no > 2:
+        #     break
     return cal_urls
 
 
@@ -264,10 +221,16 @@ def extract_events_urls_from_series_page(event_url):
 # url = "https://www.cinema.co.il/event/%d7%97%d7%aa%d7%95%d7%a0%d7%94-%d7%a4%d7%a8%d7%a1%d7%99%d7%aa-%d7%a4%d7%a1%d7%98%d7%99%d7%91%d7%9c-%d7%92%d7%90%d7%94/"
 event_url_1 = 'https://www.cinema.co.il/event/%d7%91%d7%a2%d7%91%d7%95%d7%a8-%d7%97%d7%95%d7%a4%d7%9f-%d7%93%d7%95%d7%9c%d7%a8%d7%99%d7%9d/'
 series_url_1 = 'https://www.cinema.co.il/%d7%9e%d7%99%d7%95%d7%92%d7%99%d7%9e%d7%91%d7%95-%d7%95%d7%a2%d7%93-%d7%a4%d7%a8%d7%a9/'
+series_url_2 = 'https://www.cinema.co.il/%d7%9e%d7%99%d7%95%d7%92%d7%99%d7%9e%d7%91%d7%95-%d7%95%d7%a2%d7%93-%d7%a4%d7%a8%d7%a9/'
+event_url_2 = 'https://www.cinema.co.il/event/%d7%90%d7%99%d7%a9-%d7%94%d7%a7%d7%a9-%d7%a1%d7%a8%d7%98%d7%94%d7%95%d7%a4%d7%a2%d7%94-%d7%a1%d7%90%d7%95%d7%a0%d7%93%d7%98%d7%a8%d7%90%d7%a7-2024/'
 
-calendar_urls = extract_events_urls_from_series_page(event_url_1)
+# calendar_urls = extract_events_urls_from_series_page(event_url_2)
+calendar_urls = create_calendar_urls_for_event(event_url_2)
 
 for calendar_url in calendar_urls:
     print("Click this long link to create the event:\n", calendar_url)
+
+print('---')
+for calendar_url in calendar_urls:
     print("Click this short link to create the event:\n", make_tiny(calendar_url))
 print('---')

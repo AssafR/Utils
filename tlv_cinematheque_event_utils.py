@@ -1,4 +1,7 @@
 import re
+from dataclasses import dataclass
+from typing import Dict, List
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -8,6 +11,33 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from time import sleep
 
+@dataclass
+class CinemathequeEvent:
+    header: str
+    text_description: str
+    full_description: str
+    dates: Dict[str, List[str]]
+    url: str = None
+
+    # formatted_start_time: str
+    # formatted_end_time: str
+
+    def __str__(self):
+        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
+                f"{self.dates}"
+                # f", {self.formatted_start_time}, {self.formatted_end_time})"
+                )
+
+    def __repr__(self):
+        return (f"Event({self.header}, {self.text_description}, {self.full_description}, "
+                f"{self.dates}, "
+                # f"{self.formatted_start_time}, {self.formatted_end_time})"
+                )
+
+    # def event_to_url(self):
+    #     return create_calendar_event_url(self.header, self.full_description,
+    #                                      self.formatted_start_time, self.formatted_end_time)
+    #
 
 
 def split_on_double_newlines(st):
@@ -107,13 +137,40 @@ def extract_static_content_old(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     # Extract header, description, and time
     event_data = {}
-    event_data['header'] = soup.find('div', class_='title').find('h3').get_text(strip=True)
-    event_data['text_description'] = soup.find('div', class_='text-wraper').find('h5').get_text(strip=True)
+    h3_element = soup.find('div', class_='title').find('h3')
+    event_data['header'] = h3_element.get_text(strip=True)
+    h5_element = soup.find('div', class_='text-wraper').find('h5')
+    if h5_element is None: # Special bug fix
+        h5_element = h3_element.parent.parent
+    event_data['text_description'] = h5_element.get_text(strip=True)
     event_data['full_description'] = soup.find('div', class_='text-wraper').get_text(strip=False)
     fd = soup.find('div', class_='text-wraper')
     event_data['header'] = fd.contents[3]
     event_data['description'] = fd.contents[5]
     return event_data
+
+def extract_static_content_from_html_to_event(html_content: str, dates, url: str) -> CinemathequeEvent:
+    # Parse HTML content
+    try:
+        soup = BeautifulSoup(html_content, 'html.parser')
+        # Extract header, description, and time
+        h3_element = soup.find('div', class_='title').find('h3')
+        header = h3_element.get_text(strip=True) # Obsolete ?
+        h5_element = soup.find('div', class_='text-wraper').find('h5')
+        if h5_element is None:  # Special bug fix
+            h5_element = h3_element.parent.parent
+        text_description = h5_element.get_text(strip=True)
+        full_description = soup.find('div', class_='text-wraper').get_text(strip=False)
+        fd = soup.find('div', class_='text-wraper')
+        header = fd.contents[3]
+        # description = fd.contents[5]
+        dates = dates
+
+        event_data = CinemathequeEvent(header, text_description, full_description, dates, url)
+        return event_data
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        raise e
 
 
 def extract_visible_text(url):
@@ -148,4 +205,5 @@ def extract_visible_text(url):
 
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
