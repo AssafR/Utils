@@ -96,4 +96,45 @@ def merge_overlapping_regions(results):
     return final_merged
 
 
+static_task = {
+    "name": "Static Regions",
+    "filename": None,  # Will be set in main()
+    "regions": None,  # Will be set in main()   
+    "packet_level": True,
+    "stat_func": lambda window: float(np.std(window) / np.mean(window)),
+    "threshold": 0.5,
+    "sample_every": 0.5,
+    "keep_if": "lt"
+}
+frozen_region_task = {
+    "name": "Frozen Regions",
+    "filename": None,
+    "regions": None,
+    "stat_func": is_frozen_frame,
+    "mode": "pairwise",
+    "threshold": 0.85,
+    "sample_every": 0.25,
+    "keep_if": "lt"
+}
+black_region_task = {
+    "name": "Black Regions",
+    "filename": None,
+    "regions": None,
+    "stat_func": is_black_frame,
+    "mode": "single",
+    "threshold": 2.0,
+    "sample_every": 0.25,
+    "keep_if": "lt"
+}
+all_tasks = [
+    static_task,
+    frozen_region_task,
+    black_region_task,
+]
+detection_tasks = [
+    frozen_region_task,
+    black_region_task,
+]
+
+
 

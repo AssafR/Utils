@@ -4,7 +4,7 @@ import sys
 from typing import Callable, List, Optional, Union
 import matplotlib.pyplot as plt
 
-from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, merge_overlapping_regions, print_regions
+from vid_utils import Frame, Region, all_tasks, detection_tasks, display_thumbnails, merge_overlapping_regions, print_regions, static_task
 
 def iterate_frames(container, stream, time_base, region: Region, sample_every: float):
     container.seek(int(region.start / time_base), stream=stream)
@@ -111,50 +111,6 @@ def run_region_process(config: dict) -> List[Region]:
         keep_if=config.get("keep_if", "lt")
     )
 
-static_task = {
-    "filename": None,  # Will be set in main()
-    "regions": None,  # Will be set in main()   
-    "packet_level": True,
-    "stat_func": lambda window: float(np.std(window) / np.mean(window)),
-    "threshold": 0.5,
-    "sample_every": 0.5,
-    "keep_if": "lt"
-}
-
-frozen_region_task =         {
-            "name": "Frozen Regions",
-            "filename": None,  # Will be set in main()
-            "regions": None,  # Will be set in main()
-            "stat_func": is_frozen_frame,
-            "mode": "pairwise",
-            "threshold": 0.85,
-            "sample_every": 0.25,
-            "keep_if": "lt"
-        }
-
-black_region_task =         {
-            "name": "Black Regions",
-            "filename": None,  # Will be set in main()
-            "regions": None,  # Will be set in main()
-            "stat_func": is_black_frame,
-            "mode": "single",
-            "threshold": 2.0,
-            "sample_every": 0.25,
-            "keep_if": "lt"
-        }
-
-all_tasks = [
-    static_task,
-    frozen_region_task,
-    black_region_task,
-]
-
-detection_tasks = [
-    frozen_region_task,
-    black_region_task,
-]
-
-
 def main():
     if len(sys.argv) < 2:
         print("Usage: python script.py <video_file>")
@@ -163,17 +119,22 @@ def main():
     filename = sys.argv[1]
     print(f"Analyzing: {filename}")
 
+    task_results = {}
+
     for task in all_tasks:
         task["filename"] = filename
 
-    static_regions = run_region_process(static_task)
-    print_regions(static_regions, "Candidate static regions (based on encoded size):")
-    display_thumbnails("Candidate static regions (based on encoded size)", filename, static_regions)
+        if task["name"] == "Static Regions":
+            task["regions"] = None
+        else:
+            task["regions"] = task_results.get("Static Regions")
 
-    for task in detection_tasks:
-        task["regions"] = static_regions
+        print(f"Running task: {task['name']}")
         regions = run_region_process(task)
-        print_regions(regions, f"Confirmed {task['name'].lower()}:")
+        task_results[task["name"]] = regions
+
+        print(f"Found {len(regions)} regions for task '{task['name']}'")
+        print_regions(regions, task["name"] + ":")
         display_thumbnails(task["name"], filename, regions)
 
 if __name__ == "__main__":
