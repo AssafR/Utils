@@ -98,37 +98,62 @@ def process_regions(
 
     return results
 
-def detect_static_regions(filename: str, window_seconds: float = 5, threshold: float = 0.05) -> List[Region]:
+def run_region_process(config: dict) -> List[Region]:
     return process_regions(
-        filename=filename,
-        packet_level=True,
-        stat_func=lambda window: float(np.std(window) / np.mean(window)),
-        threshold=threshold,
-        sample_every=window_seconds,
-        keep_if="lt"
+        filename=config["filename"],
+        regions=config.get("regions"),
+        packet_level=config.get("packet_level", False),
+        stat_func=config["stat_func"],
+        mode=config.get("mode", "single"),
+        threshold=config.get("threshold", 0.95),
+        sample_every=config.get("sample_every", 1.0),
+        verbose=config.get("verbose", False),
+        keep_if=config.get("keep_if", "lt")
     )
 
-def validate_regions(
-    filename: str,
-    regions: List[Region],
-    test_func: Callable[..., float],
-    mode: str = "single",
-    threshold: float = 0.95,
-    sample_every: float = 1.0,
-    verbose: bool = False,
-    keep_if: str = "lt"
-) -> List[Region]:
-    return process_regions(
-        filename=filename,
-        regions=regions,
-        packet_level=False,
-        stat_func=test_func,
-        mode=mode,
-        threshold=threshold,
-        sample_every=sample_every,
-        verbose=verbose,
-        keep_if=keep_if
-    )
+static_task = {
+    "filename": None,  # Will be set in main()
+    "regions": None,  # Will be set in main()   
+    "packet_level": True,
+    "stat_func": lambda window: float(np.std(window) / np.mean(window)),
+    "threshold": 0.5,
+    "sample_every": 0.5,
+    "keep_if": "lt"
+}
+
+frozen_region_task =         {
+            "name": "Frozen Regions",
+            "filename": None,  # Will be set in main()
+            "regions": None,  # Will be set in main()
+            "stat_func": is_frozen_frame,
+            "mode": "pairwise",
+            "threshold": 0.85,
+            "sample_every": 0.25,
+            "keep_if": "lt"
+        }
+
+black_region_task =         {
+            "name": "Black Regions",
+            "filename": None,  # Will be set in main()
+            "regions": None,  # Will be set in main()
+            "stat_func": is_black_frame,
+            "mode": "single",
+            "threshold": 2.0,
+            "sample_every": 0.25,
+            "keep_if": "lt"
+        }
+
+all_tasks = [
+    static_task,
+    frozen_region_task,
+    black_region_task,
+]
+
+detection_tasks = [
+    frozen_region_task,
+    black_region_task,
+]
+
 
 def main():
     if len(sys.argv) < 2:
@@ -138,37 +163,16 @@ def main():
     filename = sys.argv[1]
     print(f"Analyzing: {filename}")
 
-    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.5)
+    for task in all_tasks:
+        task["filename"] = filename
+
+    static_regions = run_region_process(static_task)
     print_regions(static_regions, "Candidate static regions (based on encoded size):")
     display_thumbnails("Candidate static regions (based on encoded size)", filename, static_regions)
 
-    detection_tasks = [
-        {
-            "name": "Frozen Regions",
-            "func": is_frozen_frame,
-            "mode": "pairwise",
-            "threshold": 0.85,
-            "keep_if": "lt"
-        },
-        {
-            "name": "Black Regions",
-            "func": is_black_frame,
-            "mode": "single",
-            "threshold": 2.0,
-            "keep_if": "lt"
-        }
-    ]
-
     for task in detection_tasks:
-        regions = validate_regions(
-            filename,
-            static_regions,
-            test_func=task["func"],
-            mode=task["mode"],
-            threshold=task["threshold"],
-            sample_every=0.25,
-            keep_if=task["keep_if"]
-        )
+        task["regions"] = static_regions
+        regions = run_region_process(task)
         print_regions(regions, f"Confirmed {task['name'].lower()}:")
         display_thumbnails(task["name"], filename, regions)
 
