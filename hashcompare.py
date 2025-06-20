@@ -3,6 +3,7 @@ import os, os.path
 import sys
 import time
 import shutil
+h
 from threading import Thread
 
 def hashfile(fileName, hasher, result, index, blocksize=65536):
