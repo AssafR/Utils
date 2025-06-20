@@ -4,7 +4,7 @@ import sys
 from typing import Callable, List, Optional, Union
 import matplotlib.pyplot as plt
 
-from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, print_regions
+from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, merge_overlapping_regions, print_regions
 
 def iterate_frames(container, stream, time_base, region: Region, sample_every: float):
     container.seek(int(region.start / time_base), stream=stream)
@@ -69,20 +69,8 @@ def process_regions(
                 sizes.pop(0)
                 pts.pop(0)
 
-        # Merge overlapping
-        merged = []
-        for region in results:
-            start, end, score = region
-            if not merged:
-                merged.append([start, end, score])
-            else:
-                last_start, last_end, last_score = merged[-1]
-                if start <= last_end:
-                    merged[-1][1] = max(last_end, end)
-                else:
-                    merged.append([start, end, score])
-
-        return [Region(start, end, score) for start, end, score in merged]
+        final_merged = merge_overlapping_regions(results)
+        return final_merged
 
     if not regions:
         raise ValueError("Frame-level validation requires input regions")
@@ -151,34 +139,38 @@ def main():
     print(f"Analyzing: {filename}")
 
     static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.5)
-    print("Candidate static regions (based on encoded size):")
     print_regions(static_regions, "Candidate static regions (based on encoded size):")
     display_thumbnails("Candidate static regions (based on encoded size)", filename, static_regions)
 
-    frozen_regions = validate_regions(
-        filename,
-        static_regions,
-        test_func=is_frozen_frame,
-        mode="pairwise",
-        threshold=0.85,
-        sample_every=0.25,
-        keep_if="lt"
-    )
-    print_regions(frozen_regions, "Confirmed frozen regions:")
-    display_thumbnails("Frozen Regions", filename, frozen_regions)
+    detection_tasks = [
+        {
+            "name": "Frozen Regions",
+            "func": is_frozen_frame,
+            "mode": "pairwise",
+            "threshold": 0.85,
+            "keep_if": "lt"
+        },
+        {
+            "name": "Black Regions",
+            "func": is_black_frame,
+            "mode": "single",
+            "threshold": 2.0,
+            "keep_if": "lt"
+        }
+    ]
 
-    black_regions = validate_regions(
-        filename,
-        static_regions,
-        test_func=is_black_frame,
-        mode="single",
-        threshold=2.0,
-        sample_every=0.25,
-        keep_if="lt"
-    )
-
-    print_regions(black_regions, "Confirmed black static regions (decoded content):")
-    display_thumbnails("Black Regions", filename, black_regions)
+    for task in detection_tasks:
+        regions = validate_regions(
+            filename,
+            static_regions,
+            test_func=task["func"],
+            mode=task["mode"],
+            threshold=task["threshold"],
+            sample_every=0.25,
+            keep_if=task["keep_if"]
+        )
+        print_regions(regions, f"Confirmed {task['name'].lower()}:")
+        display_thumbnails(task["name"], filename, regions)
 
 if __name__ == "__main__":
     main()

@@ -80,4 +80,20 @@ def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 
     return mean_diff
 
 
+def merge_overlapping_regions(results):
+    merged = []
+    for region in results:
+        start, end, score = region
+        if not merged:
+            merged.append([start, end, score])
+        else:
+            last_start, last_end, last_score = merged[-1]
+            if start <= last_end:
+                merged[-1][1] = max(last_end, end)
+            else:
+                merged.append([start, end, score])
+    final_merged = [Region(start, end, score) for start, end, score in merged]
+    return final_merged
+
+
 
