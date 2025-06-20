@@ -1,15 +1,15 @@
 import av
-import av.container
-import sys
 import numpy as np
+import sys
 
-def detect_static_regions(filename, window_seconds:float=5, threshold=0.05):
+def detect_static_regions(filename,  window_seconds:float=5.0, threshold=0.05):
     container: av.container.InputContainer = av.open(filename, mode='r')  # type: ignore[assignment]
     stream = container.streams.video[0]
     time_base = stream.time_base if stream.time_base else 1.0 / 25.0  # Default to 25 fps if no time base is set
     if time_base <= 0:
         raise ValueError("Invalid time base for the video stream.") 
-
+    stream.thread_type = "AUTO"
+    # Initialize lists to store frame sizes and presentation timestamps
     frame_sizes = []
     frame_pts = []
 
@@ -37,7 +37,7 @@ def detect_static_regions(filename, window_seconds:float=5, threshold=0.05):
             frame_sizes.pop(0)
             frame_pts.pop(0)
 
-    # Merge overlapping windows
+    # Merge overlapping or adjacent windows
     merged = []
     for start, end in static_candidates:
         if not merged:
@@ -51,32 +51,26 @@ def detect_static_regions(filename, window_seconds:float=5, threshold=0.05):
 
     return merged
 
+def is_frozen_frame(frame1, frame2, pixel_diff_threshold=2.0):
+    arr1 = frame1.to_ndarray(format='gray')
+    arr2 = frame2.to_ndarray(format='gray')
+    diff = np.abs(arr1.astype(np.int16) - arr2.astype(np.int16))
+    mean_diff = np.mean(diff)
+    return mean_diff < pixel_diff_threshold
 
-# --- Example callback and runner below ---
-def is_black_frame(frame, threshold=10):
-    gray = frame.to_ndarray(format='gray')  # convert to grayscale
-    return np.mean(gray) < threshold
-
-
-def validate_black_regions(filename, regions, sample_every=1.0, black_ratio=0.95):
-    
-    # container = av.open(filename)
+def validate_frozen_regions(filename, regions, sample_every=1.0, frozen_ratio=0.9):
     container: av.container.InputContainer = av.open(filename, mode='r')  # type: ignore[assignment]
-
     stream = container.streams.video[0]
-    stream.thread_type = "AUTO"
     time_base = stream.time_base
+    stream.thread_type = "AUTO"
 
-    black_segments = []
+    frozen_segments = []
 
-    for region_no,(start, end) in enumerate(regions):
-        print(f"Validating region {region_no + 1}: {start:.2f}s to {end:.2f}s")
-        if end <= start:
-            print(f"Skipping invalid region {region_no + 1}: {start:.2f}s to {end:.2f}s")
-            continue    
+    for start, end in regions:
         container.seek(int(start / time_base), stream=stream)
-        total_frames = 0
-        black_frames = 0
+        last_frame = None
+        frozen_count = 0
+        total_pairs = 0
         last_pts_sec = None
 
         for frame in container.decode(stream):
@@ -89,29 +83,44 @@ def validate_black_regions(filename, regions, sample_every=1.0, black_ratio=0.95
             if pts_sec < start:
                 continue
 
-            # Avoid oversampling
             if last_pts_sec is not None and pts_sec - last_pts_sec < sample_every:
                 continue
             last_pts_sec = pts_sec
 
-            total_frames += 1
-            if is_black_frame(frame):
-                black_frames += 1
+            if last_frame is not None:
+                total_pairs += 1
+                if is_frozen_frame(last_frame, frame):
+                    frozen_count += 1
+            last_frame = frame
 
-        if total_frames > 0 and (black_frames / total_frames) >= black_ratio:
-            black_segments.append((start, end))
+        if total_pairs > 0 and (frozen_count / total_pairs) >= frozen_ratio:
+            frozen_segments.append((start, end))
 
-    return black_segments
+    return frozen_segments
+
+def print_regions(regions,headline):
+    print(f"\n{headline}:")
+    if not regions:
+        print("  No regions found.")
+        return
+    for start, end in regions:
+        print(f"  {start:.2f}s to {end:.2f}s")
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python find_static_frozen_video.py <video_file>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    print(f"Analyzing: {filename}")
+
+    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.95)
+    print_regions(static_regions,"Candidate static regions (based on encoded size):")
+
+    frozen_regions = validate_frozen_regions(filename, static_regions, sample_every=0.25, frozen_ratio=0.85)
+    print_regions(static_regions,"Confirmed frozen video regions (decoded content):")
 
 
-def print_static_region(filename, start, end):
-    print(f"Static region in {filename}: {start:.2f}s to {end:.2f}s")
 
 if __name__ == "__main__":
-    video_file = sys.argv[1]
-
-    static_regions = detect_static_regions(video_file, window_seconds=1.0, threshold=0.85)
-    black_regions = validate_black_regions(video_file, static_regions, sample_every=0.25, black_ratio=0.95)
-
-    for start, end in black_regions:
-        print(f"Black static region in {video_file}: {start:.2f}s to {end:.2f}s")
+    main()
