@@ -6,13 +6,11 @@ import matplotlib.pyplot as plt
 
 from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, print_regions
 
-
 def process_regions(
     filename: str,
     regions: Optional[List[Region]] = None,
     packet_level: bool = False,
-    packet_stat_func: Optional[Callable[[List[int]], float]] = None,
-    frame_stat_func: Optional[Callable[..., float]] = None,
+    stat_func: Optional[Callable[..., float]] = None,
     mode: str = "single",  # "single" or "pairwise"
     threshold: float = 0.95,
     sample_every: float = 1.0,
@@ -30,7 +28,7 @@ def process_regions(
 
         frame_sizes = []
         frame_pts = []
-        static_candidates = []
+        regions_out = []
 
         for packet in container.demux(stream):
             if packet.dts is None:
@@ -41,17 +39,18 @@ def process_regions(
 
             if len(frame_sizes) >= window_size:
                 window = frame_sizes[-window_size:]
-                score = packet_stat_func(window) if packet_stat_func else 0.0
+                score = stat_func(window) if stat_func else 0.0
                 if (keep_if == "lt" and score < threshold) or (keep_if == "gt" and score > threshold):
                     start = frame_pts[-window_size]
                     end = frame_pts[-1]
-                    static_candidates.append(Region(start, end, score))
+                    regions_out.append(Region(start, end, score))
 
                 frame_sizes.pop(0)
                 frame_pts.pop(0)
 
+        # Merge overlapping regions
         merged = []
-        for region in static_candidates:
+        for region in regions_out:
             start, end, score = region
             if not merged:
                 merged.append([start, end, score])
@@ -68,8 +67,7 @@ def process_regions(
         if not regions:
             raise ValueError("Frame-level validation requires input regions")
 
-        valid_segments = []
-
+        results = []
         for region_no, region in enumerate(regions):
             start, end = region.start, region.end
             if end <= start:
@@ -100,38 +98,32 @@ def process_regions(
                     continue
                 last_pts_sec = pts_sec
 
-                if mode == "single" and frame_stat_func is not None:
-                    score = frame_stat_func(frame)
+                if mode == "single" and stat_func is not None:
+                    score = stat_func(frame)
                     scores.append(score)
 
-                elif mode == "pairwise" and frame_stat_func is not None:
+                elif mode == "pairwise" and stat_func is not None:
                     if last_frame is not None:
-                        score = frame_stat_func(last_frame, frame)
+                        score = stat_func(last_frame, frame)
                         scores.append(score)
                     last_frame = frame
 
             if scores:
                 avg_score = float(np.mean(scores))
-                region_with_score = Region(start, end, avg_score)
+                if (keep_if == "lt" and avg_score < threshold) or (keep_if == "gt" and avg_score > threshold):
+                    results.append(Region(start, end, avg_score))
 
-                if (keep_if == "lt" and avg_score >= threshold) or (keep_if == "gt" and avg_score <= threshold):
-                    continue
-
-                valid_segments.append(region_with_score)
-
-        return valid_segments
-
+        return results
 
 def detect_static_regions(filename: str, window_seconds: float = 5, threshold: float = 0.05) -> List[Region]:
     return process_regions(
         filename=filename,
         packet_level=True,
-        packet_stat_func=lambda window: float(np.std(window) / np.mean(window)),
+        stat_func=lambda window: float(np.std(window) / np.mean(window)),
         threshold=threshold,
         sample_every=window_seconds,
         keep_if="lt"
     )
-
 
 def validate_regions(
     filename: str,
@@ -146,7 +138,8 @@ def validate_regions(
     return process_regions(
         filename=filename,
         regions=regions,
-        frame_stat_func=test_func,
+        packet_level=False,
+        stat_func=test_func,
         mode=mode,
         threshold=threshold,
         sample_every=sample_every,
@@ -165,7 +158,7 @@ def main():
     static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.5)
     print("Candidate static regions (based on encoded size):")
     print_regions(static_regions, "Candidate static regions (based on encoded size):")
-    display_thumbnails("Candidate static regions (based on encoded size)",filename, static_regions)
+    display_thumbnails("Candidate static regions (based on encoded size)", filename, static_regions)
 
     frozen_regions = validate_regions(
         filename,
@@ -177,8 +170,7 @@ def main():
         keep_if="lt"
     )
     print_regions(frozen_regions, "Confirmed frozen regions:")
-    display_thumbnails("Frozen Regions",filename, frozen_regions)
-
+    display_thumbnails("Frozen Regions", filename, frozen_regions)
 
     black_regions = validate_regions(
         filename,
@@ -191,6 +183,7 @@ def main():
     )
 
     print_regions(black_regions, "Confirmed black static regions (decoded content):")
-    display_thumbnails("Black Regions",filename, black_regions)
+    display_thumbnails("Black Regions", filename, black_regions)
+
 if __name__ == "__main__":
     main()
