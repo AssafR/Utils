@@ -14,7 +14,7 @@ class Region(NamedTuple):
 def validate_regions(
     filename: str,
     regions: List[Region],
-    test_func: Callable[..., bool],
+    test_func: Callable[..., float],
     mode: str = "single",  # "single" or "pairwise"
     threshold: float = 0.95,
     sample_every: float = 1.0,
@@ -41,8 +41,7 @@ def validate_regions(
         last_frame: Optional[Frame] = None
         last_pts_sec: Optional[float] = None
 
-        match_count = 0
-        total_checks = 0
+        scores = []
 
         for frame in container.decode(stream):
             if frame.pts is None:
@@ -59,22 +58,21 @@ def validate_regions(
             last_pts_sec = pts_sec
 
             if mode == "single":
-                total_checks += 1
-                if test_func(frame):
-                    match_count += 1
+                score = test_func(frame)
+                scores.append(score)
 
             elif mode == "pairwise":
                 if last_frame is not None:
-                    total_checks += 1
-                    if test_func(last_frame, frame):
-                        match_count += 1
+                    score = test_func(last_frame, frame)
+                    scores.append(score)
                 last_frame = frame
 
-        if total_checks > 0:
-            ratio = match_count / total_checks
-            region_with_score = Region(start, end, ratio)
-            if ratio >= threshold:
-                valid_segments.append(region_with_score)
+        if scores:
+            avg_score = float(np.mean(scores))
+            region_with_score = Region(start, end, avg_score)
+            if avg_score > threshold:
+                continue
+            valid_segments.append(region_with_score)
 
     return valid_segments
 
@@ -97,11 +95,19 @@ def validate_black_regions(
     )
 
 
+def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 2.0) -> float:
+    arr1 = frame1.to_ndarray(format='gray')
+    arr2 = frame2.to_ndarray(format='gray')
+    diff = np.abs(arr1.astype(np.int16) - arr2.astype(np.int16))
+    mean_diff = float(np.mean(diff))
+    return mean_diff
+
+
 def validate_frozen_regions(
     filename: str,
     regions: List[Region],
     sample_every: float = 1.0,
-    frozen_ratio: float = 0.9,
+    frozen_ratio: float = 0.95,
     verbose: bool = False
 ) -> List[Region]:
     return validate_regions(
@@ -115,21 +121,13 @@ def validate_frozen_regions(
     )
 
 
-def is_black_frame(frame: Frame, threshold: float = 10.0) -> bool:
+def is_black_frame(frame: Frame, threshold: float = 10.0) -> float:
     gray = frame.to_ndarray(format='gray')
     mean_val = float(np.mean(gray))
-    return mean_val < threshold
+    return mean_val
 
 
-def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 2.0) -> bool:
-    arr1 = frame1.to_ndarray(format='gray')
-    arr2 = frame2.to_ndarray(format='gray')
-    diff = np.abs(arr1.astype(np.int16) - arr2.astype(np.int16))
-    mean_diff = float(np.mean(diff))
-    return mean_diff < pixel_diff_threshold
-
-
-def detect_static_regions(filename, window_seconds:float=5.0, threshold:float=0.05) -> List[Region]:
+def detect_static_regions(filename, window_seconds:float=5.0, threshold=0.05) -> List[Region]:
     container: av.container.InputContainer = av.open(filename, mode='r')  # type: ignore[assignment]
     stream = container.streams.video[0]
     time_base = stream.time_base if stream.time_base else 1.0 / 25.0
@@ -239,20 +237,20 @@ def main():
     filename = sys.argv[1]
     print(f"Analyzing: {filename}")
 
-    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.95)
+    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.65)
     print_regions(static_regions, "Candidate static regions (based on encoded size):")
 
     frozen_regions = validate_frozen_regions(filename, static_regions, sample_every=0.25, frozen_ratio=0.85, verbose=True)
     print_regions(frozen_regions, "Confirmed frozen video regions (decoded content):")
 
-    # Optional: validate for black regions
-    black_regions = validate_black_regions(filename, static_regions, sample_every=0.25, black_ratio=0.95, verbose=True)
+    black_regions = validate_black_regions(filename, static_regions, sample_every=0.1, black_ratio=0.45, verbose=True)
     print_regions(black_regions, "Confirmed black static regions (decoded content):")
 
-    # Show thumbnails for each confirmed frozen region
     display_thumbnails("Frozen regions", filename, frozen_regions, thumbs_per_row=10)
-    # display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
+    display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
 
 
 if __name__ == "__main__":
     main()
+# This script detects static and frozen regions in a video file.
+# It uses the PyAV library to read video frames and analyze them.
