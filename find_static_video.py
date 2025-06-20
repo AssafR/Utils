@@ -1,12 +1,15 @@
 import av
 import numpy as np
 import sys
-from typing import Callable, List, Tuple, Optional
+from typing import Callable, List, Optional, NamedTuple
 import matplotlib.pyplot as plt
 
 Frame = av.VideoFrame
-Region = Tuple[float, float]
 
+class Region(NamedTuple):
+    start: float
+    end: float
+    score: Optional[float] = None
 
 def validate_regions(
     filename: str,
@@ -24,7 +27,8 @@ def validate_regions(
 
     valid_segments = []
 
-    for region_no, (start, end) in enumerate(regions):
+    for region_no, region in enumerate(regions):
+        start, end = region.start, region.end
         if end <= start:
             if verbose:
                 print(f"Skipping invalid region {region_no + 1}: {start:.2f}s to {end:.2f}s")
@@ -66,8 +70,11 @@ def validate_regions(
                         match_count += 1
                 last_frame = frame
 
-        if total_checks > 0 and (match_count / total_checks) >= threshold:
-            valid_segments.append((start, end))
+        if total_checks > 0:
+            ratio = match_count / total_checks
+            region_with_score = Region(start, end, ratio)
+            if ratio >= threshold:
+                valid_segments.append(region_with_score)
 
     return valid_segments
 
@@ -110,19 +117,20 @@ def validate_frozen_regions(
 
 def is_black_frame(frame: Frame, threshold: float = 10.0) -> bool:
     gray = frame.to_ndarray(format='gray')
-    return np.mean(gray) < threshold
+    mean_val = float(np.mean(gray))
+    return mean_val < threshold
 
 
 def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 2.0) -> bool:
     arr1 = frame1.to_ndarray(format='gray')
     arr2 = frame2.to_ndarray(format='gray')
     diff = np.abs(arr1.astype(np.int16) - arr2.astype(np.int16))
-    mean_diff = np.mean(diff)
+    mean_diff = float(np.mean(diff))
     return mean_diff < pixel_diff_threshold
 
 
-def detect_static_regions(filename, window_seconds=5, threshold=0.05):
-    container = av.open(filename, mode='r')
+def detect_static_regions(filename, window_seconds:float=5.0, threshold:float=0.05) -> List[Region]:
+    container: av.container.InputContainer = av.open(filename, mode='r')  # type: ignore[assignment]
     stream = container.streams.video[0]
     time_base = stream.time_base if stream.time_base else 1.0 / 25.0
 
@@ -143,36 +151,40 @@ def detect_static_regions(filename, window_seconds=5, threshold=0.05):
 
         if len(frame_sizes) >= window_size:
             window = frame_sizes[-window_size:]
-            std_dev = np.std(window) / np.mean(window)
+            std_dev = float(np.std(window) / np.mean(window))
 
             if std_dev < threshold:
                 start = frame_pts[-window_size]
                 end = frame_pts[-1]
-                static_candidates.append((start, end))
+                static_candidates.append(Region(start, end, std_dev))
 
             frame_sizes.pop(0)
             frame_pts.pop(0)
 
     merged = []
-    for start, end in static_candidates:
+    for region in static_candidates:
+        start, end, score = region
         if not merged:
-            merged.append([start, end])
+            merged.append([start, end, score])
         else:
-            last_start, last_end = merged[-1]
+            last_start, last_end, last_score = merged[-1]
             if start <= last_end:
                 merged[-1][1] = max(last_end, end)
             else:
-                merged.append([start, end])
+                merged.append([start, end, score])
 
-    return merged
+    return [Region(start, end, score) for start, end, score in merged]
 
 
-def print_regions(regions, title):
+def print_regions(regions: List[Region], title: str):
     print(f"\n{title}")
     if not regions:
         print("  (none found)")
-    for start, end in regions:
-        print(f"  {start:.2f}s to {end:.2f}s")
+    for region in regions:
+        if region.score is not None:
+            print(f"  {region.start:.2f}s to {region.end:.2f}s (score={region.score:.3f})")
+        else:
+            print(f"  {region.start:.2f}s to {region.end:.2f}s")
 
 
 def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_per_row: int = 10):
@@ -184,7 +196,9 @@ def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_
     all_thumbs = []
     labels = []
 
-    for start, end in regions:
+    for region in regions:
+        start, end = region.start, region.end
+        score_text = f" ({region.score:.3f})" if region.score is not None else ""
         container.seek(int(start / time_base), stream=stream)
         thumbnails = []
         for frame in container.decode(stream):
@@ -197,7 +211,7 @@ def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_
             if len(thumbnails) >= thumbs_per_row:
                 break
         all_thumbs.append(thumbnails)
-        labels.append(f"{start:.2f}s – {end:.2f}s")
+        labels.append(f"{start:.2f}s – {end:.2f}s{score_text}")
 
     rows = len(all_thumbs)
     fig, axes = plt.subplots(rows, thumbs_per_row, figsize=(thumbs_per_row * 1.5, rows * 1.5))
@@ -237,7 +251,7 @@ def main():
 
     # Show thumbnails for each confirmed frozen region
     display_thumbnails("Frozen regions", filename, frozen_regions, thumbs_per_row=10)
-    display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
+    # display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
 
 
 if __name__ == "__main__":
