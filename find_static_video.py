@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, print_regions
 
+
 def process_regions(
     filename: str,
     regions: Optional[List[Region]] = None,
