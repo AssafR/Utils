@@ -127,7 +127,7 @@ def is_black_frame(frame: Frame, threshold: float = 10.0) -> float:
     return mean_val
 
 
-def detect_static_regions(filename, window_seconds:float=5.0, threshold=0.05) -> List[Region]:
+def detect_static_regions(filename, window_seconds=5, threshold=0.05) -> List[Region]:
     container: av.container.InputContainer = av.open(filename, mode='r')  # type: ignore[assignment]
     stream = container.streams.video[0]
     time_base = stream.time_base if stream.time_base else 1.0 / 25.0
@@ -243,14 +243,13 @@ def main():
     frozen_regions = validate_frozen_regions(filename, static_regions, sample_every=0.25, frozen_ratio=0.85, verbose=True)
     print_regions(frozen_regions, "Confirmed frozen video regions (decoded content):")
 
-    black_regions = validate_black_regions(filename, static_regions, sample_every=0.1, black_ratio=0.45, verbose=True)
+    black_regions = validate_black_regions(filename, static_regions, sample_every=0.1, black_ratio=0.55, verbose=True)
     print_regions(black_regions, "Confirmed black static regions (decoded content):")
 
     display_thumbnails("Frozen regions", filename, frozen_regions, thumbs_per_row=10)
     display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
 
 
+
 if __name__ == "__main__":
     main()
-# This script detects static and frozen regions in a video file.
-# It uses the PyAV library to read video frames and analyze them.
