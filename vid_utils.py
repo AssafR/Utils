@@ -1,6 +1,8 @@
 from typing import NamedTuple, List, Optional
 import av
 from matplotlib import pyplot as plt
+import numpy as np
+
 
 class Region(NamedTuple):
     start: float
@@ -8,6 +10,7 @@ class Region(NamedTuple):
     score: Optional[float] = None
 
 Frame = av.VideoFrame
+
 def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_per_row: int = 10):
     container = av.open(filename, mode='r')
     stream = container.streams.video[0]
@@ -50,5 +53,31 @@ def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_
     plt.tight_layout()
     plt.subplots_adjust(top=0.9)
     plt.show()
+
+
+def print_regions(regions: List[Region], title: str):
+    print(f"\n{title}")
+    if not regions:
+        print("  (none found)")
+    for region in regions:
+        if region.score is not None:
+            print(f"  {region.start:.2f}s to {region.end:.2f}s (score={region.score:.3f})")
+        else:
+            print(f"  {region.start:.2f}s to {region.end:.2f}s")
+
+
+def is_black_frame(frame: Frame, threshold: float = 10.0) -> float:
+    gray = frame.to_ndarray(format='gray')
+    mean_val = float(np.mean(gray))
+    return mean_val
+
+
+def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 2.0) -> float:
+    arr1 = frame1.to_ndarray(format='gray')
+    arr2 = frame2.to_ndarray(format='gray')
+    diff = np.abs(arr1.astype(np.float32) - arr2.astype(np.float32))
+    mean_diff = float(np.mean(diff))
+    return mean_diff
+
 
 

@@ -4,19 +4,7 @@ import sys
 from typing import Callable, List, Optional
 import matplotlib.pyplot as plt
 
-from vid_utils import Frame, Region
-
-def is_black_frame(frame: Frame, threshold: float = 10.0) -> float:
-    gray = frame.to_ndarray(format='gray')
-    mean_val = float(np.mean(gray))
-    return mean_val
-
-def is_frozen_frame(frame1: Frame, frame2: Frame, pixel_diff_threshold: float = 2.0) -> float:
-    arr1 = frame1.to_ndarray(format='gray')
-    arr2 = frame2.to_ndarray(format='gray')
-    diff = np.abs(arr1.astype(np.float32) - arr2.astype(np.float32))
-    mean_diff = float(np.mean(diff))
-    return mean_diff
+from vid_utils import Frame, Region, display_thumbnails, is_black_frame, is_frozen_frame, print_regions
 
 def process_regions(
     filename: str,
@@ -111,11 +99,11 @@ def process_regions(
                     continue
                 last_pts_sec = pts_sec
 
-                if mode == "single":
+                if mode == "single" and frame_stat_func is not None:
                     score = frame_stat_func(frame)
                     scores.append(score)
 
-                elif mode == "pairwise":
+                elif mode == "pairwise" and frame_stat_func is not None:
                     if last_frame is not None:
                         score = frame_stat_func(last_frame, frame)
                         scores.append(score)
@@ -132,6 +120,7 @@ def process_regions(
 
         return valid_segments
 
+
 def detect_static_regions(filename: str, window_seconds: float = 5, threshold: float = 0.05) -> List[Region]:
     return process_regions(
         filename=filename,
@@ -141,6 +130,7 @@ def detect_static_regions(filename: str, window_seconds: float = 5, threshold: f
         sample_every=window_seconds,
         keep_if="lt"
     )
+
 
 def validate_regions(
     filename: str,
@@ -171,10 +161,10 @@ def main():
     filename = sys.argv[1]
     print(f"Analyzing: {filename}")
 
-    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.95)
+    static_regions = detect_static_regions(filename, window_seconds=0.5, threshold=0.5)
     print("Candidate static regions (based on encoded size):")
-    for r in static_regions:
-        print(f"  {r.start:.2f}–{r.end:.2f}  score={r.score:.3f}")
+    print_regions(static_regions, "Candidate static regions (based on encoded size):")
+    display_thumbnails("Candidate static regions (based on encoded size)",filename, static_regions)
 
     frozen_regions = validate_regions(
         filename,
@@ -183,24 +173,23 @@ def main():
         mode="pairwise",
         threshold=0.85,
         sample_every=0.25,
-        keep_if="gt"
+        keep_if="lt"
     )
-    print("Confirmed frozen regions:")
-    for r in frozen_regions:
-        print(f"  {r.start:.2f}–{r.end:.2f}  score={r.score:.3f}")
+    print_regions(frozen_regions, "Confirmed frozen regions:")
+    display_thumbnails("Frozen Regions",filename, frozen_regions)
+
 
     black_regions = validate_regions(
         filename,
         static_regions,
         test_func=is_black_frame,
         mode="single",
-        threshold=10.0,
+        threshold=2.0,
         sample_every=0.25,
         keep_if="lt"
     )
-    print("Confirmed black regions:")
-    for r in black_regions:
-        print(f"  {r.start:.2f}–{r.end:.2f}  score={r.score:.3f}")
 
+    print_regions(black_regions, "Confirmed black static regions (decoded content):")
+    display_thumbnails("Black Regions",filename, black_regions)
 if __name__ == "__main__":
     main()
