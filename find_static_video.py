@@ -2,6 +2,7 @@ import av
 import numpy as np
 import sys
 from typing import Callable, List, Tuple, Optional
+import matplotlib.pyplot as plt
 
 Frame = av.VideoFrame
 Region = Tuple[float, float]
@@ -174,6 +175,48 @@ def print_regions(regions, title):
         print(f"  {start:.2f}s to {end:.2f}s")
 
 
+def display_thumbnails(title: str, filename: str, regions: List[Region], thumbs_per_row: int = 10):
+    container = av.open(filename, mode='r')
+    stream = container.streams.video[0]
+    time_base = stream.time_base if stream.time_base else 1.0 / 25.0
+    stream.thread_type = "AUTO"
+
+    all_thumbs = []
+    labels = []
+
+    for start, end in regions:
+        container.seek(int(start / time_base), stream=stream)
+        thumbnails = []
+        for frame in container.decode(stream):
+            pts_sec = float(frame.pts * time_base)
+            if pts_sec > end:
+                break
+            if pts_sec < start:
+                continue
+            thumbnails.append(frame.to_image())
+            if len(thumbnails) >= thumbs_per_row:
+                break
+        all_thumbs.append(thumbnails)
+        labels.append(f"{start:.2f}s – {end:.2f}s")
+
+    rows = len(all_thumbs)
+    fig, axes = plt.subplots(rows, thumbs_per_row, figsize=(thumbs_per_row * 1.5, rows * 1.5))
+    fig.suptitle(title, fontsize=16)
+
+    for i, row_thumbs in enumerate(all_thumbs):
+        for j in range(thumbs_per_row):
+            ax = axes[i, j] if rows > 1 else axes[j]
+            ax.axis('off')
+            if j == 0:
+                ax.set_title(labels[i], fontsize=10, loc='left')
+            if j < len(row_thumbs):
+                ax.imshow(row_thumbs[j])
+
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.9)
+    plt.show()
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python find_static_frozen_video.py <video_file>")
@@ -191,6 +234,10 @@ def main():
     # Optional: validate for black regions
     black_regions = validate_black_regions(filename, static_regions, sample_every=0.25, black_ratio=0.95, verbose=True)
     print_regions(black_regions, "Confirmed black static regions (decoded content):")
+
+    # Show thumbnails for each confirmed frozen region
+    display_thumbnails("Frozen regions", filename, frozen_regions, thumbs_per_row=10)
+    display_thumbnails("Black regions", filename, black_regions, thumbs_per_row=10)
 
 
 if __name__ == "__main__":
