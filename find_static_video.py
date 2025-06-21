@@ -4,26 +4,47 @@ import sys
 from typing import Callable, List, Optional, Union
 import matplotlib.pyplot as plt
 
-from vid_utils import Frame, Region, all_tasks, detection_tasks, display_thumbnails, merge_overlapping_regions, print_regions, static_task
+from vid_utils import Frame, Region, all_tasks, display_thumbnails, merge_overlapping_regions, print_regions, static_task
 
-def iterate_frames(container, stream, time_base, region: Region, sample_every: float):
-    container.seek(int(region.start / time_base), stream=stream)
+def iterate_video(
+    container,
+    stream,
+    time_base,
+    regions: Optional[List[Region]] = None,
+    sample_every: float = 1.0,
+    decode: bool = True
+):
     last_pts_sec = None
     last_frame = None
+    pts = []
+    sizes = []
+
+    def in_region(pts_sec):
+        if not regions:
+            return True
+        return any(r.start <= pts_sec <= r.end for r in regions)
 
     for packet in container.demux(stream):
+        if not decode:
+            if packet.dts is None:
+                continue
+            pts_sec = float(packet.dts * time_base)
+            if in_region(pts_sec):
+                pts.append(pts_sec)
+                sizes.append(packet.size)
+                yield (pts, sizes, None, None)  # Dummy return for uniformity
+            continue
+
         for frame in packet.decode():
             if frame.pts is None:
                 continue
             pts_sec = float(frame.pts * time_base)
-            if pts_sec < region.start:
+            if not in_region(pts_sec):
                 continue
-            if pts_sec > region.end:
-                return
             if last_pts_sec is not None and pts_sec - last_pts_sec < sample_every:
                 continue
             last_pts_sec = pts_sec
-            yield frame, last_frame
+            yield (None, None, frame, last_frame)
             last_frame = frame
 
 def process_regions(
@@ -50,51 +71,47 @@ def process_regions(
     if packet_level:
         avg_fps = float(stream.average_rate or 25)
         window_size = int(sample_every * avg_fps)
-        sizes = []
-        pts = []
+        all_pts = []
+        all_sizes = []
 
-        for packet in container.demux(stream):
-            if packet.dts is None:
+        for pts, sizes, _, _ in iterate_video(container, stream, time_base, decode=False):
+            if pts is None or sizes is None:
                 continue
-            sizes.append(packet.size)
-            pts.append(float(packet.dts * time_base))
+            all_pts.extend(pts)
+            all_sizes.extend(sizes)
 
-            if len(sizes) >= window_size:
-                window = sizes[-window_size:]
+            if len(all_sizes) >= window_size:
+                window = all_sizes[-window_size:]
                 score = stat_func(window) if stat_func else 0.0
                 if keep(score):
-                    start = pts[-window_size]
-                    end = pts[-1]
+                    start = all_pts[-window_size]
+                    end = all_pts[-1]
                     results.append(Region(start, end, score))
-                sizes.pop(0)
-                pts.pop(0)
+                all_sizes.pop(0)
+                all_pts.pop(0)
 
-        final_merged = merge_overlapping_regions(results)
-        return final_merged
+        return merge_overlapping_regions(results)
 
     if not regions:
         raise ValueError("Frame-level validation requires input regions")
 
-    for region_no, region in enumerate(regions):
-        start, end = region.start, region.end
-        if end <= start:
-            if verbose:
-                print(f"Skipping invalid region {region_no + 1}: {start:.2f}s to {end:.2f}s")
-            continue
-        if verbose:
-            print(f"Validating region {region_no + 1}: {start:.2f}s to {end:.2f}s")
+    region_map = {region: [] for region in regions}
 
-        scores = []
-        for frame, last_frame in iterate_frames(container, stream, time_base, region, sample_every):
-            if mode == "single" and stat_func is not None:
-                scores.append(stat_func(frame))
-            elif mode == "pairwise" and stat_func is not None and last_frame is not None:
-                scores.append(stat_func(last_frame, frame))
+    for _, _, frame, last_frame in iterate_video(container, stream, time_base, regions=regions, sample_every=sample_every, decode=True):
+        pts_sec = float(frame.pts * time_base)
+        for region in regions:
+            if region.start <= pts_sec <= region.end:
+                if mode == "single" and stat_func is not None:
+                    region_map[region].append(stat_func(frame))
+                elif mode == "pairwise" and stat_func is not None and last_frame is not None:
+                    region_map[region].append(stat_func(last_frame, frame))
+                break
 
+    for region, scores in region_map.items():
         if scores:
             avg_score = float(np.mean(scores))
             if keep(avg_score):
-                results.append(Region(start, end, avg_score))
+                results.append(Region(region.start, region.end, avg_score))
 
     return results
 
