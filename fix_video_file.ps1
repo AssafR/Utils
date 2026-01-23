@@ -5,15 +5,18 @@
 
 Set-StrictMode -Version 2
 
-# Toggle: set to $true to skip remux and only run post-mortem verification.
-$SkipRemux = $true
+# Settings
+$Settings = [ordered]@{
+  # Toggle: set to $true to skip remux and only run post-mortem verification.
+  SkipRemux = $false # $true
 
-# Verification watchdogs (seconds). If no progress or total runtime exceeds limit, abort attempt.
-$VerifyNoProgressTimeoutSec = 60
-$VerifyMaxRuntimeSec = 600
+  # Verification watchdogs (seconds). If no progress or total runtime exceeds limit, abort attempt.
+  VerifyNoProgressTimeoutSec = 60
+  VerifyMaxRuntimeSec        = 600
 
-# Echo non-progress ffmpeg stderr lines during verification (helps debugging stalls).
-$EchoVerifyStderr = $true
+  # Echo non-progress ffmpeg stderr lines during verification (helps debugging stalls).
+  EchoVerifyStderr = $true
+}
 
 function Assert-True([bool]$Condition, [string]$Message) {
   if (-not $Condition) { throw "ASSERT: $Message" }
@@ -30,6 +33,15 @@ function Test-ExistingPath([string]$Path, [string]$Name) {
   if (-not (Test-Path -LiteralPath $Path)) {
     throw "Invalid ${Name}: path not found: $Path"
   }
+}
+
+function Assert-Settings([hashtable]$Settings) {
+  Assert-True ($Settings.SkipRemux -is [bool]) "Settings.SkipRemux must be boolean."
+  Assert-True ($Settings.EchoVerifyStderr -is [bool]) "Settings.EchoVerifyStderr must be boolean."
+  Assert-True ($Settings.VerifyNoProgressTimeoutSec -is [int]) "Settings.VerifyNoProgressTimeoutSec must be int."
+  Assert-True ($Settings.VerifyMaxRuntimeSec -is [int]) "Settings.VerifyMaxRuntimeSec must be int."
+  Assert-True ($Settings.VerifyNoProgressTimeoutSec -gt 0) "Settings.VerifyNoProgressTimeoutSec must be > 0."
+  Assert-True ($Settings.VerifyMaxRuntimeSec -gt 0) "Settings.VerifyMaxRuntimeSec must be > 0."
 }
 
 function Convert-MsToUs([int64]$Ms) {
@@ -363,7 +375,7 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
     if ($hw) { Write-Host "Verify decode: trying hwaccel=$hw" }
     else     { Write-Host 'Verify decode: trying CPU' }
 
-    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $VerifyNoProgressTimeoutSec -MaxRuntimeSec $VerifyMaxRuntimeSec -EchoStderr $EchoVerifyStderr -DisplayTag $label
+    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label
     Write-Host "Verify decode: attempt $attempt exit code = $verifyExit"
 
     if ($verifyExit -eq 0) {
@@ -602,6 +614,9 @@ $harmlessPatterns = @(
 # ----------------------
 # Main flow
 # ----------------------
+# Validate settings early to fail fast with clear errors.
+Assert-Settings $Settings
+
 # Resolve input/output paths and derived naming.
 $paths = Get-OutputPaths -InputPath (Get-ResolvedInputPath $InputFile)
 $inPath  = $paths.InPath
@@ -618,7 +633,7 @@ $modeLabel = if ($needAacBsf) { 'TS + AAC (using -bsf:a aac_adtstoasc)' } else {
 Write-Host ("`nInput : `"{0}`"`nOutput: `"{1}`"`nMode  : {2}`n" -f $inPath, $outPath, $modeLabel)
 
 # Perform the remux (no re-encode).
-if (-not $SkipRemux) {
+if (-not $Settings.SkipRemux) {
   Invoke-TriageRemux -InputPath $inPath -OutputPath $outPath -NeedAacBsf $needAacBsf
   Write-Host "`nSUCCESS.`n"
 } else {
@@ -628,7 +643,7 @@ if (-not $SkipRemux) {
 
 # Validate the output with decode+audio checks (hwaccel fallback where available).
 Write-Host 'Running post-mortem verification pass...'
-$durUs = Get-VerificationDurationUs -OutPath $outPath -InPath $inPath -SkipRemux $SkipRemux
+$durUs = Get-VerificationDurationUs -OutPath $outPath -InPath $inPath -SkipRemux $Settings.SkipRemux
 
 # Try hardware decode first (if available), then CPU fallback.
 $verifyResult = Invoke-Verification -OutPath $outPath -LogPath $logPath -DurUs $durUs
