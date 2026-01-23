@@ -5,46 +5,66 @@ import numpy as np
 import scipy.io.wavfile as wav
 import scipy
 
-def read(f, normalized=False):
+
+# read the audio from input video file
+def read_audio_file_to_numpy_old(f, normalized=False):
     """MP3 to numpy array"""
-    a = pydub.AudioSegment.from_file(f)
-    y = np.array(a.get_array_of_samples())
-    if a.channels == 2:
-        y = y.reshape((-1, 2))
+    audio_segment = pydub.AudioSegment.from_file(f)
+    audio_array = np.array(audio_segment.get_array_of_samples())
+    print(audio_array.dtype), audio_array.shape, audio_array.min(), audio_array.max()
+
+    if audio_segment.channels == 2:
+        audio_array = audio_array.reshape((-1, 2))
     if normalized:
-        return a.frame_rate, np.float32(y) / 2 ** 15
+        return audio_segment.frame_rate, np.float32(audio_array) / (2 ** 15)
     else:
-        return a.frame_rate, y
+        return audio_segment.frame_rate, audio_array
+
+
+def read_audio_file_to_numpy(f, normalized=False, convert_to_mono=False):
+    """MP3 to numpy array"""
+    audio_segment = pydub.AudioSegment.from_file(f)
+    if convert_to_mono:
+        audio_segment = audio_segment.set_channels(1)
+
+    audio_array = np.array(audio_segment.get_array_of_samples())
+    audio_array = audio_array.reshape((-1, audio_segment.channels))  # E.g. for stereo, convert to dimension 2
+    if normalized:
+        return audio_segment.frame_rate, np.float16(np.float32(audio_array) / np.iinfo(audio_array.dtype).max)
+    else:
+        return audio_segment.frame_rate, audio_array
 
 
 input_file = r'T:\Cassettes Customers\Tom\Phase 14\Sample.mkv'
 
-# read the audio from input video file
 
 def float_to_int(signal, bits=12):
     signal_normal = (signal - signal.min()) / (signal.max() - signal.min())
-    signal_int = (signal_normal * (2**bits-1)).astype(np.uint16)
+    signal_int = (signal_normal * (2 ** bits - 1)).astype(np.uint16)
     return signal_int
 
+
 def calc_entropy(signal):
-    value,counts = np.unique(signal, return_counts=True)
+    value, counts = np.unique(signal, return_counts=True)
     return scipy.stats.entropy(counts)
 
+
 def calc_entropies(wavs):
-    wavs_int = wavs.astype(np.int16) # wavs_int = float_to_int(wavs)
+    wavs_int = wavs.astype(np.int16)  # wavs_int = float_to_int(wavs)
     entropies = []
     for channel_no in range(wavs_int.shape[1]):
-        wav_int = wavs_int[:,channel_no]
+        wav_int = wavs_int[:, channel_no]
         entropies.append(calc_entropy(wav_int))
     return entropies
+
 
 audio: np.array
 rate: int
 
-rate, audio = read(input_file) # Audio is type int16
+rate, audio = read_audio_file_to_numpy(input_file)  # Audio is type int16
 print("rate: ", rate)
 first_sample = 2000000
-num_samples=1800000
+num_samples = 1800000
 slice_audio = audio[first_sample:(first_sample + num_samples), :]
 slice_audio_int = float_to_int(slice_audio)
 print(f'num samples in slice: {slice_audio.shape[0]}')
