@@ -36,8 +36,9 @@ def parse_time_and_name(line):
     else:
         time_sec = int(time)
 
-    split_line[0] = time_sec
-    return split_line;
+    new_line = [time_sec, "" + ' '.join(split_line[1:]) + ""]
+    #split_line[0] = time_sec
+    return new_line
 
 
 def send(command):
@@ -54,7 +55,7 @@ f = open('E:\\DriveE\\Downloads\\PVR\\code2.log', 'a')  # Log file, to disable r
 # "C:\Program Files (x86)\NPVR\schedule" -channel 3 -start now -seconds 60 -name "Max" -pre 0 -post 0
 
 args = sys.argv[1:]  # Input parameter
-with open(args[0]) as input:
+with open(args[0],encoding="utf8") as input:
     content = input.readlines()
 content = [x.strip() for x in content if x and (not x.isspace())]
 times = [parse_time_and_name(x) for x in content]
