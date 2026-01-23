@@ -1,8 +1,19 @@
-﻿param(
+﻿# Examples:
+#   .\fix_video_file.ps1 file.ts
+#   .\fix_video_file.ps1 file.ts -SkipRemux
+#   .\fix_video_file.ps1 file.ts -SkipRemux -EchoVerifyStderr
+#   .\fix_video_file.ps1 file.ts -VerifyNoProgressTimeoutSec 120 -VerifyNoProgressAfterProgressSec 300 -VerifyMaxRuntimeSec 1200
+
+
+param(
   [Parameter(Mandatory=$true, Position=0)]
+  [Alias("i")]
   [string]$InputFile,
+
   [switch]$SkipRemux,
+  [switch]$NoProgress,
   [switch]$EchoVerifyStderr,
+
   [int]$VerifyNoProgressTimeoutSec,
   [int]$VerifyNoProgressAfterProgressSec,
   [int]$VerifyMaxRuntimeSec
@@ -10,23 +21,80 @@
 
 Set-StrictMode -Version 2
 
-# Examples:
-#   .\fix_video_file.ps1 file.ts
-#   .\fix_video_file.ps1 file.ts -SkipRemux
-#   .\fix_video_file.ps1 file.ts -SkipRemux -EchoVerifyStderr
-#   .\fix_video_file.ps1 file.ts -VerifyNoProgressTimeoutSec 120 -VerifyNoProgressAfterProgressSec 300 -VerifyMaxRuntimeSec 1200
+# ======================
+# Output policy
+#   - When run interactively (ConsoleHost) and NOT redirected: show live progress ticker.
+#   - When run via PostProcessing.bat / redirected: suppress ticker and write normal logs.
+# ======================
+$script:IsConsoleHost = ($Host.Name -eq 'ConsoleHost')
+$script:IsRedirected  = [Console]::IsOutputRedirected -or [Console]::IsErrorRedirected
+$script:ShowProgress  = $script:IsConsoleHost -and (-not $script:IsRedirected) -and (-not $NoProgress)
+
+function Write-Info([string]$Message) { Write-Host $Message }
+function Write-Warn([string]$Message) { Write-Warning $Message }
+function Write-Err([string]$Message)  { Write-Error $Message }
+
+$script:_LastProgress = $null
+function Write-ProgressLine([string]$Message) {
+  if (-not $script:ShowProgress) { return }
+  if ($Message -eq $script:_LastProgress) { return }
+  $script:_LastProgress = $Message
+  Write-Host ("`r" + $Message) -NoNewline
+}
+function Write-ProgressDone() {
+  if (-not $script:ShowProgress) { return }
+  $script:_LastProgress = $null
+  Write-Host ""
+}
 
 # ======================
 # Settings
 # ======================
 
 # ---- Tools ----
-$FFMPEG  = "C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe"
-$FFPROBE = "C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe"
+# ---- Tools (self-contained discovery; works under SYSTEM) ----
+function Resolve-ExePath([string]$ExeName, [string[]]$Candidates) {
+  # 1) If it's on PATH, use it
+  $cmd = Get-Command $ExeName -ErrorAction SilentlyContinue
+  if ($cmd -and $cmd.Path -and (Test-Path -LiteralPath $cmd.Path)) {
+    return $cmd.Path
+  }
 
-foreach ($p in @($FFMPEG, $FFPROBE)) {
-    if (-not (Test-Path $p)) { throw "Missing tool: $p" }
+  # 2) Otherwise, scan candidate absolute paths
+  foreach ($p in $Candidates) {
+    if ([string]::IsNullOrWhiteSpace($p)) { continue }
+    if (Test-Path -LiteralPath $p) { return $p }
+  }
+
+  throw "Missing tool: $ExeName. Not found on PATH and not found in candidate paths."
 }
+
+function Get-ExeCandidates([string]$ExeName, [string[]]$RootDirs) {
+  $list = New-Object System.Collections.Generic.List[string]
+  foreach ($root in $RootDirs) {
+    if ([string]::IsNullOrWhiteSpace($root)) { continue }
+    $list.Add((Join-Path $root $ExeName))
+  }
+  # De-dup (case-insensitive) while preserving order
+  return $list | Select-Object -Unique
+}
+
+# Candidate roots (add/remove as you like)
+$FFMPEG_ROOTS = @(
+  # WinGet user shims (works for normal user; SYSTEM usually won't have these)
+  (Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Links"),
+  "C:\ffmpeg\bin",
+  "C:\ProgramData\chocolatey\bin",
+  "C:\Program Files\ffmpeg\bin",
+  "E:\ffmpeg\bin"
+)
+
+$FFMPEG  = Resolve-ExePath "ffmpeg.exe"  (Get-ExeCandidates "ffmpeg.exe"  $FFMPEG_ROOTS)
+$FFPROBE = Resolve-ExePath "ffprobe.exe" (Get-ExeCandidates "ffprobe.exe" $FFMPEG_ROOTS)
+
+Write-Info "Using ffmpeg : $FFMPEG"
+Write-Info "Using ffprobe: $FFPROBE"
+
 
 $Settings = [ordered]@{
   # Toggle: set to $true to skip remux and only run post-mortem verification.
@@ -40,13 +108,6 @@ $Settings = [ordered]@{
   # Echo non-progress ffmpeg stderr lines during verification (helps debugging stalls).
   EchoVerifyStderr = $true
 }
-
-# ======================
-# Logging
-# ======================
-function Write-Info([string]$Message) { Write-Host $Message }
-function Write-Warn([string]$Message) { Write-Warning $Message }
-function Write-Err([string]$Message) { Write-Error $Message }
 
 # ======================
 # Helpers
@@ -66,6 +127,11 @@ function Test-ExistingPath([string]$Path, [string]$Name) {
   if (-not (Test-Path -LiteralPath $Path)) {
     throw "Invalid ${Name}: path not found: $Path"
   }
+}
+
+function Strip-Ansi([string]$Text) {
+  if ([string]::IsNullOrEmpty($Text)) { return $Text }
+  return ($Text -replace "`e\[[0-9;]*[A-Za-z]", '')
 }
 
 function Assert-Settings([hashtable]$Settings) {
@@ -410,7 +476,7 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
     if ($hw) { Write-Info "Verify decode: trying hwaccel=$hw" }
     else     { Write-Info 'Verify decode: trying CPU' }
 
-    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -NoProgressAfterProgressSec $Settings.VerifyNoProgressAfterProgressSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label
+    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -NoProgressAfterProgressSec $Settings.VerifyNoProgressAfterProgressSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label -Interactive:$script:ShowProgress
     Write-Info "Verify decode: attempt $attempt exit code = $verifyExit"
 
     if ($verifyExit -eq 0) {
@@ -429,7 +495,10 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
   }
 
   Assert-True ($null -ne $verifyExit) 'Verification did not produce an exit code.'
-  return @{ ExitCode = $verifyExit; Used = $used }
+  return [pscustomobject]@{
+    ExitCode = [int]$verifyExit
+    Used     = [string]$used
+  }
 }
 
 function Complete-VerificationLog(
@@ -482,7 +551,8 @@ function Invoke-Verify(
   [int]$NoProgressAfterProgressSec = 180,
   [int]$MaxRuntimeSec = 600,
   [bool]$EchoStderr = $false,
-  [string]$DisplayTag = ''
+  [string]$DisplayTag = '',
+  [switch]$Interactive
 ) {
   Assert-NonEmptyString $outPath 'Output path'
   Assert-NonEmptyString $logPath 'Log path'
@@ -506,6 +576,25 @@ function Invoke-Verify(
   )
 
   $argString = ($argList | ForEach-Object { Format-Arg $_ }) -join ' '
+# If we're interactive, preserve ffmpeg's native console behavior (colors + in-place progress).
+# Remove -progress (key=value spam) and enable -stats.
+if ($Interactive.IsPresent) {
+
+  $argListInteractive = @()
+  for ($i = 0; $i -lt $argList.Count; $i++) {
+    $item = $argList[$i]
+    if ($item -eq '-progress') { $i++; continue }
+    if ($item -eq '-nostats') { continue }
+    $argListInteractive += $item
+  }
+  $argListInteractive += '-stats'
+
+  $global:LASTEXITCODE = 0
+  & $FFMPEG @argListInteractive
+  return [int]$global:LASTEXITCODE
+}
+
+
 
   $psi = New-Object System.Diagnostics.ProcessStartInfo
   $psi.FileName = $FFMPEG
@@ -549,8 +638,9 @@ function Invoke-Verify(
       return
     }
     if ($k) { return }
-    try { $script:verifyLogWriter.WriteLine($eventArgs.Data) } catch { }
-    if ($script:verifyEchoStderr) { Write-Host $eventArgs.Data }
+    $line = $eventArgs.Data
+    try { $script:verifyLogWriter.WriteLine((Strip-Ansi $line)) } catch { }
+    if ($script:verifyEchoStderr) { [Console]::WriteLine($line) }
   } | Out-Null
 
   $p.BeginOutputReadLine()
@@ -584,7 +674,7 @@ function Invoke-Verify(
 
       if (Test-RenderProgress -Percent $snapshot.Percent -LastPercent $lastPct -Now $now -LastRender $lastRender) {
         $tag = if ($DisplayTag) { "[$DisplayTag] " } else { '' }
-        Write-Host ("`rVerifying {0}{1,3}%  ETA {2}  speed {3,-8}" -f $tag, $snapshot.Percent, $snapshot.Eta, $script:speed) -NoNewline
+        Write-ProgressLine ("Verifying {0}{1,3}%  ETA {2}  speed {3,-8}" -f $tag, $snapshot.Percent, $snapshot.Eta, $script:speed)
         $lastPct = $snapshot.Percent
         $lastRender = $now
       }
@@ -593,10 +683,10 @@ function Invoke-Verify(
       if ((($now - $lastRender).TotalSeconds -ge 0.5)) {
         if ($script:speed -eq '?') {
           $tag = if ($DisplayTag) { "[$DisplayTag] " } else { '' }
-          Write-Host "`rVerifying $tag`waiting for progress..." -NoNewline
+          Write-ProgressLine ("Verifying {0}waiting for progress..." -f $tag)
         } else {
           $tag = if ($DisplayTag) { "[$DisplayTag] " } else { '' }
-          Write-Host ("`rVerifying {0}speed {1,-8}" -f $tag, $script:speed) -NoNewline
+          Write-ProgressLine ("Verifying {0}speed {1,-8}" -f $tag, $script:speed)
         }
         $lastRender = $now
       }
@@ -621,7 +711,7 @@ function Invoke-Verify(
   }
 
   $sw.Stop()
-  Write-Host ''
+  Write-ProgressDone
 
   try { $p.CancelOutputReadLine() } catch { }
   try { $p.CancelErrorReadLine() } catch { }
@@ -701,4 +791,3 @@ Write-Info "Verification log saved to `"$logPath`""
 Complete-VerificationLog -VerifyExit $verifyResult.ExitCode -LogPath $logPath -OutPath $outPath -HarmlessPatterns $harmlessPatterns
 
 exit 0
-
