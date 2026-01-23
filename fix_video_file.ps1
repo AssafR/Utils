@@ -4,6 +4,7 @@
 #   .\fix_video_file.ps1 file.ts -SkipRemux -EchoVerifyStderr
 #   .\fix_video_file.ps1 file.ts -VerifyNoProgressTimeoutSec 120 -VerifyNoProgressAfterProgressSec 300 -VerifyMaxRuntimeSec 1200
 #   .\fix_video_file.ps1 file.ts -VerifyCaptureLogInInteractive
+#   .\fix_video_file.ps1 file.ts -ForceProgress
 
 
 param(
@@ -13,6 +14,7 @@ param(
 
   [switch]$SkipRemux,
   [switch]$NoProgress,
+  [switch]$ForceProgress,
   [switch]$EchoVerifyStderr,
   [switch]$VerifyCaptureLogInInteractive,
 
@@ -27,10 +29,19 @@ Set-StrictMode -Version 2
 # Output policy
 #   - When run interactively (ConsoleHost) and NOT redirected: show live progress ticker.
 #   - When run via PostProcessing.bat / redirected: suppress ticker and write normal logs.
+#   - -ForceProgress overrides -NoProgress and redirection checks.
 # ======================
 $script:IsConsoleHost = ($Host.Name -eq 'ConsoleHost')
 $script:IsRedirected  = [Console]::IsOutputRedirected -or [Console]::IsErrorRedirected
-$script:ShowProgress  = $script:IsConsoleHost -and (-not $script:IsRedirected) -and (-not $NoProgress)
+$script:ShowProgress  = $ForceProgress -or ($script:IsConsoleHost -and (-not $script:IsRedirected) -and (-not $NoProgress))
+
+function Get-ProgressModeReason {
+  if ($ForceProgress) { return 'forced by -ForceProgress switch' }
+  if ($NoProgress) { return 'disabled by -NoProgress switch' }
+  if (-not $script:IsConsoleHost) { return "host '$($Host.Name)' is not ConsoleHost" }
+  if ($script:IsRedirected) { return 'output/error is redirected (no TTY)' }
+  return 'enabled'
+}
 
 function Write-Info([string]$Message) { Write-Host $Message }
 function Write-Warn([string]$Message) { Write-Warning $Message }
@@ -786,6 +797,9 @@ if (-not $Settings.SkipRemux) {
 
 # Validate the output with decode+audio checks (hwaccel fallback where available).
 Write-Info 'Running post-mortem verification pass...'
+if (-not $script:ShowProgress) {
+  Write-Info ("Progress ticker is disabled: {0}" -f (Get-ProgressModeReason))
+}
 $durUs = Get-VerificationDurationUs -OutPath $outPath -InPath $inPath -SkipRemux $Settings.SkipRemux
 
 # Try hardware decode first (if available), then CPU fallback.
