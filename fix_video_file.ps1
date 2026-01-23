@@ -3,6 +3,7 @@
 #   .\fix_video_file.ps1 file.ts -SkipRemux
 #   .\fix_video_file.ps1 file.ts -SkipRemux -EchoVerifyStderr
 #   .\fix_video_file.ps1 file.ts -VerifyNoProgressTimeoutSec 120 -VerifyNoProgressAfterProgressSec 300 -VerifyMaxRuntimeSec 1200
+#   .\fix_video_file.ps1 file.ts -VerifyCaptureLogInInteractive
 
 
 param(
@@ -13,6 +14,7 @@ param(
   [switch]$SkipRemux,
   [switch]$NoProgress,
   [switch]$EchoVerifyStderr,
+  [switch]$VerifyCaptureLogInInteractive,
 
   [int]$VerifyNoProgressTimeoutSec,
   [int]$VerifyNoProgressAfterProgressSec,
@@ -107,6 +109,9 @@ $Settings = [ordered]@{
 
   # Echo non-progress ffmpeg stderr lines during verification (helps debugging stalls).
   EchoVerifyStderr = $true
+
+  # When interactive, capture verify logs using internal progress (not native ffmpeg stats).
+  VerifyCaptureLogInInteractive = $true
 }
 
 # ======================
@@ -140,6 +145,7 @@ function Assert-Settings([hashtable]$Settings) {
   Assert-True ($Settings.VerifyNoProgressTimeoutSec -is [int]) "Settings.VerifyNoProgressTimeoutSec must be int."
   Assert-True ($Settings.VerifyNoProgressAfterProgressSec -is [int]) "Settings.VerifyNoProgressAfterProgressSec must be int."
   Assert-True ($Settings.VerifyMaxRuntimeSec -is [int]) "Settings.VerifyMaxRuntimeSec must be int."
+  Assert-True ($Settings.VerifyCaptureLogInInteractive -is [bool]) "Settings.VerifyCaptureLogInInteractive must be boolean."
   Assert-True ($Settings.VerifyNoProgressTimeoutSec -gt 0) "Settings.VerifyNoProgressTimeoutSec must be > 0."
   Assert-True ($Settings.VerifyNoProgressAfterProgressSec -gt 0) "Settings.VerifyNoProgressAfterProgressSec must be > 0."
   Assert-True ($Settings.VerifyMaxRuntimeSec -gt 0) "Settings.VerifyMaxRuntimeSec must be > 0."
@@ -476,7 +482,7 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
     if ($hw) { Write-Info "Verify decode: trying hwaccel=$hw" }
     else     { Write-Info 'Verify decode: trying CPU' }
 
-    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -NoProgressAfterProgressSec $Settings.VerifyNoProgressAfterProgressSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label -Interactive:$script:ShowProgress
+    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -NoProgressAfterProgressSec $Settings.VerifyNoProgressAfterProgressSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label -Interactive:$script:ShowProgress -CaptureLogInInteractive:$Settings.VerifyCaptureLogInInteractive
     Write-Info "Verify decode: attempt $attempt exit code = $verifyExit"
 
     if ($verifyExit -eq 0) {
@@ -552,7 +558,8 @@ function Invoke-Verify(
   [int]$MaxRuntimeSec = 600,
   [bool]$EchoStderr = $false,
   [string]$DisplayTag = '',
-  [switch]$Interactive
+  [switch]$Interactive,
+  [switch]$CaptureLogInInteractive
 ) {
   Assert-NonEmptyString $outPath 'Output path'
   Assert-NonEmptyString $logPath 'Log path'
@@ -576,9 +583,9 @@ function Invoke-Verify(
   )
 
   $argString = ($argList | ForEach-Object { Format-Arg $_ }) -join ' '
-# If we're interactive, preserve ffmpeg's native console behavior (colors + in-place progress).
+# If we're interactive and not capturing logs, preserve ffmpeg's native console behavior.
 # Remove -progress (key=value spam) and enable -stats.
-if ($Interactive.IsPresent) {
+if ($Interactive.IsPresent -and (-not $CaptureLogInInteractive)) {
 
   $argListInteractive = @()
   for ($i = 0; $i -lt $argList.Count; $i++) {
@@ -745,6 +752,7 @@ $harmlessPatterns = @(
 # Apply CLI overrides (only when explicitly provided).
 if ($PSBoundParameters.ContainsKey('SkipRemux')) { $Settings.SkipRemux = [bool]$SkipRemux }
 if ($PSBoundParameters.ContainsKey('EchoVerifyStderr')) { $Settings.EchoVerifyStderr = [bool]$EchoVerifyStderr }
+if ($PSBoundParameters.ContainsKey('VerifyCaptureLogInInteractive')) { $Settings.VerifyCaptureLogInInteractive = [bool]$VerifyCaptureLogInInteractive }
 if ($PSBoundParameters.ContainsKey('VerifyNoProgressTimeoutSec')) { $Settings.VerifyNoProgressTimeoutSec = $VerifyNoProgressTimeoutSec }
 if ($PSBoundParameters.ContainsKey('VerifyNoProgressAfterProgressSec')) { $Settings.VerifyNoProgressAfterProgressSec = $VerifyNoProgressAfterProgressSec }
 if ($PSBoundParameters.ContainsKey('VerifyMaxRuntimeSec')) { $Settings.VerifyMaxRuntimeSec = $VerifyMaxRuntimeSec }
