@@ -6,10 +6,10 @@ import shutil
 
 def hashfile(afile, hasher, blocksize=65536):
 	try:
-		buf = afile.read(blocksize)
+		buf = afile.read_audio_file_to_numpy(blocksize)
 		while len(buf) > 0:
 			hasher.update(buf)
-			buf = afile.read(blocksize)
+			buf = afile.read_audio_file_to_numpy(blocksize)
 		return hasher.hexdigest()
 	except OSError as ex:
 		print("Error in hashing file ",afile)

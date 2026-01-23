@@ -1,23 +1,56 @@
 ﻿param(
   [Parameter(Mandatory=$true, Position=0)]
-  [string]$InputFile
+  [string]$InputFile,
+  [switch]$SkipRemux,
+  [switch]$EchoVerifyStderr,
+  [int]$VerifyNoProgressTimeoutSec,
+  [int]$VerifyNoProgressAfterProgressSec,
+  [int]$VerifyMaxRuntimeSec
 )
 
 Set-StrictMode -Version 2
 
+# Examples:
+#   .\fix_video_file.ps1 file.ts
+#   .\fix_video_file.ps1 file.ts -SkipRemux
+#   .\fix_video_file.ps1 file.ts -SkipRemux -EchoVerifyStderr
+#   .\fix_video_file.ps1 file.ts -VerifyNoProgressTimeoutSec 120 -VerifyNoProgressAfterProgressSec 300 -VerifyMaxRuntimeSec 1200
+
+# ======================
 # Settings
+# ======================
+
+# ---- Tools ----
+$FFMPEG  = "C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe"
+$FFPROBE = "C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe"
+
+foreach ($p in @($FFMPEG, $FFPROBE)) {
+    if (-not (Test-Path $p)) { throw "Missing tool: $p" }
+}
+
 $Settings = [ordered]@{
   # Toggle: set to $true to skip remux and only run post-mortem verification.
   SkipRemux = $false # $true
 
   # Verification watchdogs (seconds). If no progress or total runtime exceeds limit, abort attempt.
   VerifyNoProgressTimeoutSec = 60
+  VerifyNoProgressAfterProgressSec = 180
   VerifyMaxRuntimeSec        = 600
 
   # Echo non-progress ffmpeg stderr lines during verification (helps debugging stalls).
   EchoVerifyStderr = $true
 }
 
+# ======================
+# Logging
+# ======================
+function Write-Info([string]$Message) { Write-Host $Message }
+function Write-Warn([string]$Message) { Write-Warning $Message }
+function Write-Err([string]$Message) { Write-Error $Message }
+
+# ======================
+# Helpers
+# ======================
 function Assert-True([bool]$Condition, [string]$Message) {
   if (-not $Condition) { throw "ASSERT: $Message" }
 }
@@ -39,8 +72,10 @@ function Assert-Settings([hashtable]$Settings) {
   Assert-True ($Settings.SkipRemux -is [bool]) "Settings.SkipRemux must be boolean."
   Assert-True ($Settings.EchoVerifyStderr -is [bool]) "Settings.EchoVerifyStderr must be boolean."
   Assert-True ($Settings.VerifyNoProgressTimeoutSec -is [int]) "Settings.VerifyNoProgressTimeoutSec must be int."
+  Assert-True ($Settings.VerifyNoProgressAfterProgressSec -is [int]) "Settings.VerifyNoProgressAfterProgressSec must be int."
   Assert-True ($Settings.VerifyMaxRuntimeSec -is [int]) "Settings.VerifyMaxRuntimeSec must be int."
   Assert-True ($Settings.VerifyNoProgressTimeoutSec -gt 0) "Settings.VerifyNoProgressTimeoutSec must be > 0."
+  Assert-True ($Settings.VerifyNoProgressAfterProgressSec -gt 0) "Settings.VerifyNoProgressAfterProgressSec must be > 0."
   Assert-True ($Settings.VerifyMaxRuntimeSec -gt 0) "Settings.VerifyMaxRuntimeSec must be > 0."
 }
 
@@ -194,14 +229,14 @@ function Get-AacBsfNeeded([string]$InputPath, [string]$Extension) {
   if ($tsLikeExt -notcontains $Extension.ToLowerInvariant()) { return $false }
 
   try {
-    $aCodecLine = & ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 -- $InputPath |
+    $aCodecLine = & $FFPROBE -v error -select_streams a:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 -- $InputPath |
       Select-Object -First 1
     if ([string]::IsNullOrWhiteSpace($aCodecLine)) { return $false }
     $codec = $aCodecLine.Trim().ToLowerInvariant()
     $isAac = [bool]($codec -eq 'aac')
     return $isAac
   } catch {
-    Write-Warning "Failed to detect audio codec; defaulting to no AAC bitstream filter. $($_.Exception.Message)"
+    Write-Warn "Failed to detect audio codec; defaulting to no AAC bitstream filter. $($_.Exception.Message)"
     return $false
   }
 }
@@ -216,7 +251,7 @@ function Format-Arg([string]$s) {
 
 function Get-FfmpegHwaccels {
   try {
-    $out = & ffmpeg -hide_banner -hwaccels 2>$null
+    $out = & $FFMPEG -hide_banner -hwaccels 2>$null
     return ($out | ForEach-Object { $_.Trim() }) | Where-Object { $_ -and ($_ -notmatch '^Hardware acceleration methods') }
   } catch {
     return @()
@@ -228,19 +263,19 @@ function Get-FormatDurationSec([string]$Path) {
   $durSec = 0.0
 
   try {
-    $d = & ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 -- $Path
+    $d = & $FFPROBE -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 -- $Path
     $ci = [System.Globalization.CultureInfo]::InvariantCulture
     if (-not [double]::TryParse($d.Trim(), [System.Globalization.NumberStyles]::Float, $ci, [ref]$durSec)) {
-      Write-Warning "Unable to parse duration from ffprobe output: '$d'"
+      Write-Warn "Unable to parse duration from ffprobe output: '$d'"
       $durSec = 0.0
     }
   } catch {
-    Write-Warning "ffprobe failed to read duration: $($_.Exception.Message)"
+    Write-Warn "ffprobe failed to read duration: $($_.Exception.Message)"
     $durSec = 0.0
   }
 
   if ($durSec -lt 0) {
-    Write-Warning "Duration is negative ($durSec). Using 0."
+    Write-Warn "Duration is negative ($durSec). Using 0."
     $durSec = 0.0
   }
 
@@ -258,23 +293,23 @@ function Get-VerificationDurationUs([string]$OutPath, [string]$InPath, [bool]$Sk
   if ($durUs -gt 0) { return $durUs }
 
   if ($SkipRemux) {
-    Write-Warning "Output duration unavailable; falling back to input duration for ETA."
+    Write-Warn "Output duration unavailable; falling back to input duration for ETA."
     $durUs = Get-FormatDurationUs $InPath
     if ($durUs -gt 0) { return $durUs }
   }
 
-  Write-Warning "Duration unavailable; progress will show speed only."
+  Write-Warn "Duration unavailable; progress will show speed only."
   return [int64]0
 }
 
-function Stop-ProcessTree([int]$Pid) {
-  if ($Pid -le 0) { return }
-  try { Stop-Process -Id $Pid -Force -ErrorAction SilentlyContinue } catch { }
+function Stop-ProcessTree([int]$ProcessId) {
+  if ($ProcessId -le 0) { return }
+  try { Stop-Process -Id $ProcessId -Force -ErrorAction SilentlyContinue } catch { }
   Start-Sleep -Milliseconds 200
   try {
-    $still = Get-Process -Id $Pid -ErrorAction SilentlyContinue
+    $still = Get-Process -Id $ProcessId -ErrorAction SilentlyContinue
     if ($null -ne $still) {
-      & taskkill /PID $Pid /T /F | Out-Null
+      & taskkill /PID $ProcessId /T /F | Out-Null
     }
   } catch { }
 }
@@ -302,7 +337,7 @@ function Get-LogLinesSafe([string]$LogPath) {
     $lines = Get-Content -LiteralPath $LogPath -ErrorAction Stop
     return @($lines)
   } catch {
-    Write-Warning "Failed reading log file: $LogPath. $($_.Exception.Message)"
+    Write-Warn "Failed reading log file: $LogPath. $($_.Exception.Message)"
     return @()
   }
 }
@@ -347,7 +382,7 @@ function Invoke-TriageRemux([string]$InputPath, [string]$OutputPath, [bool]$Need
   $ffArgs += $OutputPath
 
   $LASTEXITCODE = 0
-  & ffmpeg @ffArgs
+  & $FFMPEG @ffArgs
   if ($LASTEXITCODE -ne 0) {
     throw "Triage remux failed with exit code $LASTEXITCODE."
   }
@@ -371,12 +406,12 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
     $attempt++
     $label = if ($hw) { "hw=$hw" } else { "CPU" }
 
-    Write-Host ''
-    if ($hw) { Write-Host "Verify decode: trying hwaccel=$hw" }
-    else     { Write-Host 'Verify decode: trying CPU' }
+    Write-Info ''
+    if ($hw) { Write-Info "Verify decode: trying hwaccel=$hw" }
+    else     { Write-Info 'Verify decode: trying CPU' }
 
-    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label
-    Write-Host "Verify decode: attempt $attempt exit code = $verifyExit"
+    $verifyExit = Invoke-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt -NoProgressTimeoutSec $Settings.VerifyNoProgressTimeoutSec -NoProgressAfterProgressSec $Settings.VerifyNoProgressAfterProgressSec -MaxRuntimeSec $Settings.VerifyMaxRuntimeSec -EchoStderr $Settings.EchoVerifyStderr -DisplayTag $label
+    Write-Info "Verify decode: attempt $attempt exit code = $verifyExit"
 
     if ($verifyExit -eq 0) {
       $used = if ($hw) { $hw } else { 'CPU' }
@@ -384,7 +419,7 @@ function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) 
     }
 
     if ($hw) {
-      Write-Warning "Verify decode: hwaccel=$hw failed (exit $verifyExit). Trying next candidate..."
+      Write-Warn "Verify decode: hwaccel=$hw failed (exit $verifyExit). Trying next candidate..."
       Remove-Item -LiteralPath $LogPath -Force -ErrorAction SilentlyContinue
       Start-Sleep -Milliseconds 100
       continue
@@ -416,24 +451,24 @@ function Complete-VerificationLog(
   if ($VerifyExit -ne 0) {
     $newLog = "${baseLog}_WITHERRORS.log"
     Rename-Log -LogPath $LogPath -NewLog $newLog
-    Write-Host "Verification failed (exit $VerifyExit)."
-    Write-Host "Log renamed to: `"$newLog`""
+    Write-Info "Verification failed (exit $VerifyExit)."
+    Write-Info "Log renamed to: `"$newLog`""
     exit $VerifyExit
   }
 
   if ($meaningfulLines.Count -eq 0) {
     $newLog = "${baseLog}_NOERRORS.log"
     Rename-Log -LogPath $LogPath -NewLog $newLog
-    Write-Host 'The file seems clean (only harmless warnings, if any).'
-    Write-Host "Log renamed to: `"$newLog`""
+    Write-Info 'The file seems clean (only harmless warnings, if any).'
+    Write-Info "Log renamed to: `"$newLog`""
   } else {
     $newLog = "${baseLog}_WITHERRORS.log"
     Rename-Log -LogPath $LogPath -NewLog $newLog
-    Write-Host 'Verification produced meaningful warnings/errors.'
-    Write-Host "Log renamed to: `"$newLog`""
-    Write-Host ''
-    Write-Host 'First issues detected:'
-    $meaningfulLines | Select-Object -First 8 | ForEach-Object { Write-Host "  $_" }
+    Write-Info 'Verification produced meaningful warnings/errors.'
+    Write-Info "Log renamed to: `"$newLog`""
+    Write-Info ''
+    Write-Info 'First issues detected:'
+    $meaningfulLines | Select-Object -First 8 | ForEach-Object { Write-Info "  $_" }
   }
 }
 
@@ -444,6 +479,7 @@ function Invoke-Verify(
   [string]$hwaccel,
   [string]$hwoutfmt,
   [int]$NoProgressTimeoutSec = 60,
+  [int]$NoProgressAfterProgressSec = 180,
   [int]$MaxRuntimeSec = 600,
   [bool]$EchoStderr = $false,
   [string]$DisplayTag = ''
@@ -452,6 +488,7 @@ function Invoke-Verify(
   Assert-NonEmptyString $logPath 'Log path'
   Assert-True ($durUs -ge 0) "Duration microseconds must be >= 0."
   Assert-True ($NoProgressTimeoutSec -gt 0) "NoProgressTimeoutSec must be > 0."
+  Assert-True ($NoProgressAfterProgressSec -gt 0) "NoProgressAfterProgressSec must be > 0."
   Assert-True ($MaxRuntimeSec -gt 0) "MaxRuntimeSec must be > 0."
 
   New-Item -Path $logPath -ItemType File -Force | Out-Null
@@ -471,7 +508,7 @@ function Invoke-Verify(
   $argString = ($argList | ForEach-Object { Format-Arg $_ }) -join ' '
 
   $psi = New-Object System.Diagnostics.ProcessStartInfo
-  $psi.FileName = 'ffmpeg'
+  $psi.FileName = $FFMPEG
   $psi.Arguments = $argString
   $psi.RedirectStandardOutput = $true
   $psi.RedirectStandardError  = $true
@@ -565,17 +602,18 @@ function Invoke-Verify(
       }
     }
 
-    if (([datetime]::UtcNow - $script:verifyLastProgressUpdate).TotalSeconds -ge $NoProgressTimeoutSec) {
+    $timeoutSec = if ($script:outTimeUs -gt 0) { $NoProgressAfterProgressSec } else { $NoProgressTimeoutSec }
+    if (([datetime]::UtcNow - $script:verifyLastProgressUpdate).TotalSeconds -ge $timeoutSec) {
       $stalled = $true
-      Stop-ProcessTree -Pid $p.Id
-      Write-Warning "Verification stalled (no progress for ${NoProgressTimeoutSec}s)."
+      Stop-ProcessTree -ProcessId $p.Id
+      Write-Warn "Verification stalled (no progress for ${timeoutSec}s)."
       break
     }
 
     if ($totalSw.Elapsed.TotalSeconds -ge $MaxRuntimeSec) {
       $stalled = $true
-      Stop-ProcessTree -Pid $p.Id
-      Write-Warning "Verification timed out after ${MaxRuntimeSec}s."
+      Stop-ProcessTree -ProcessId $p.Id
+      Write-Warn "Verification timed out after ${MaxRuntimeSec}s."
       break
     }
 
@@ -614,6 +652,13 @@ $harmlessPatterns = @(
 # ----------------------
 # Main flow
 # ----------------------
+# Apply CLI overrides (only when explicitly provided).
+if ($PSBoundParameters.ContainsKey('SkipRemux')) { $Settings.SkipRemux = [bool]$SkipRemux }
+if ($PSBoundParameters.ContainsKey('EchoVerifyStderr')) { $Settings.EchoVerifyStderr = [bool]$EchoVerifyStderr }
+if ($PSBoundParameters.ContainsKey('VerifyNoProgressTimeoutSec')) { $Settings.VerifyNoProgressTimeoutSec = $VerifyNoProgressTimeoutSec }
+if ($PSBoundParameters.ContainsKey('VerifyNoProgressAfterProgressSec')) { $Settings.VerifyNoProgressAfterProgressSec = $VerifyNoProgressAfterProgressSec }
+if ($PSBoundParameters.ContainsKey('VerifyMaxRuntimeSec')) { $Settings.VerifyMaxRuntimeSec = $VerifyMaxRuntimeSec }
+
 # Validate settings early to fail fast with clear errors.
 Assert-Settings $Settings
 
@@ -630,27 +675,27 @@ Assert-True ($needAacBsf -is [bool]) "Expected boolean from Get-AacBsfNeeded, go
 
 # Print a concise summary of the planned operation.
 $modeLabel = if ($needAacBsf) { 'TS + AAC (using -bsf:a aac_adtstoasc)' } else { 'Generic remux (no audio bitstream filter)' }
-Write-Host ("`nInput : `"{0}`"`nOutput: `"{1}`"`nMode  : {2}`n" -f $inPath, $outPath, $modeLabel)
+Write-Info ("`nInput : `"{0}`"`nOutput: `"{1}`"`nMode  : {2}`n" -f $inPath, $outPath, $modeLabel)
 
 # Perform the remux (no re-encode).
 if (-not $Settings.SkipRemux) {
   Invoke-TriageRemux -InputPath $inPath -OutputPath $outPath -NeedAacBsf $needAacBsf
-  Write-Host "`nSUCCESS.`n"
+  Write-Info "`nSUCCESS.`n"
 } else {
-  Write-Host "`nSKIP: remux disabled; verifying existing output only.`n"
+  Write-Info "`nSKIP: remux disabled; verifying existing output only.`n"
   Test-ExistingPath $outPath 'Output file'
 }
 
 # Validate the output with decode+audio checks (hwaccel fallback where available).
-Write-Host 'Running post-mortem verification pass...'
+Write-Info 'Running post-mortem verification pass...'
 $durUs = Get-VerificationDurationUs -OutPath $outPath -InPath $inPath -SkipRemux $Settings.SkipRemux
 
 # Try hardware decode first (if available), then CPU fallback.
 $verifyResult = Invoke-Verification -OutPath $outPath -LogPath $logPath -DurUs $durUs
 
 # Report verification method and log location.
-Write-Host "Verification completed using: $($verifyResult.Used)"
-Write-Host "Verification log saved to `"$logPath`""
+Write-Info "Verification completed using: $($verifyResult.Used)"
+Write-Info "Verification log saved to `"$logPath`""
 
 # Classify log contents, rename log accordingly, and surface first issues if any.
 Complete-VerificationLog -VerifyExit $verifyResult.ExitCode -LogPath $logPath -OutPath $outPath -HarmlessPatterns $harmlessPatterns
