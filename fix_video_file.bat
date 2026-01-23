@@ -1,18 +1,30 @@
 @echo off
 setlocal
 set "HERE=%~dp0"
+
+if "%~1"=="" (
+  echo Usage: %~nx0 "input.ts" [extra ps args...]
+  exit /b 2
+)
+
 set "IN=%~1"
+shift
 
-rem Log so you can see failures
-set "LOG=%HERE%fix_video_file_run.log"
-echo ==== %date% %time% ==== >> "%LOG%"
-echo whoami: >> "%LOG%"
-whoami >> "%LOG%"
-echo IN=%IN% >> "%LOG%"
+rem Build remaining args manually, since %* doesn't change after SHIFT
+set "REST_ARGS="
+:args_loop
+if "%~1"=="" goto args_done
+set "REST_ARGS=%REST_ARGS% "%~1""
+shift
+goto args_loop
+:args_done
 
-rem Run the ps1 using an absolute path
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%HERE%fix_video_file.ps1" "%IN%" >> "%LOG%" 2>&1
-echo exitcode=%errorlevel% >> "%LOG%"
+echo IN="%IN%"
+echo REST=%REST_ARGS%
 
+powershell.exe -NoProfile -ExecutionPolicy Bypass ^
+  -File "%HERE%fix_video_file.ps1" -InputFile "%IN%" %REST_ARGS%
+
+set "EC=%errorlevel%"
 endlocal
-exit /b %errorlevel%
+exit /b %EC%

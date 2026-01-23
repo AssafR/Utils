@@ -1232,3 +1232,3379 @@ Verification log saved to "G:\Manual Recordings\Manual Recordings\Default_202601
 The file seems clean (only harmless warnings, if any).
 Log renamed to: "G:\Manual Recordings\Manual Recordings\Default_20260123_19061907_NOERRORS.log"
 exitcode=0 
+==== Fri 01/23/2026 23:50:14.04 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts 
+Using ffmpeg : C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe
+Using ffprobe: C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+[h264 @ 000002bf37d13e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000002bf37d13e00] no frame!
+
+Input : "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts"
+Output: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv"
+Mode  : TS + AAC (using -bsf:a aac_adtstoasc)
+
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[h264 @ 0000023904681bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000023904681bc0] no frame!
+[mpegts @ 0000023904677a00] DTS discontinuity in stream 0: packet 1855 with DTS 3357270, packet 1856 with DTS 6956100
+[mpegts @ 0000023904677a00] DTS discontinuity in stream 1: packet 1453 with DTS 3357180, packet 1454 with DTS 7094250
+Input #0, mpegts, from 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts':
+  Duration: 00:01:35.81, start: 6.304000, bitrate: 5879 kb/s
+  Program 256 
+    Metadata:
+      service_name    : Capture4ME
+      service_provider: Capture4ME
+  Stream #0:0[0x7d1]: Video: h264 (Constrained Baseline) ([27][0][0][0] / 0x001B), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], 59.94 fps, 59.94 tbr, 90k tbn, start 6.356000
+  Stream #0:1[0x7d2]: Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 192 kb/s, start 6.304000
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, matroska, to 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (Constrained Baseline) (H264 / 0x34363248), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], q=2-31, 59.94 fps, 59.94 tbr, 1k tbn
+  Stream #0:1: Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, stereo, fltp, 192 kb/s
+Press [q] to stop, [?] for help
+[vist#0:0/h264 @ 0000023904c5ccc0] timestamp discontinuity (stream id=2001): 39970322, new offset= -39970322
+[out#0/matroska @ 0000023904676b00] video:62508KiB audio:1254KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.069563%
+frame= 3238 fps=0.0 q=-1.0 Lsize=   63806KiB time=00:00:55.76 bitrate=9373.9kbits/s speed= 361x elapsed=0:00:00.15    
+
+SUCCESS.
+
+Running post-mortem verification pass...
+
+Verify decode: trying hwaccel=cuda
+Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]  53%  ETA 00:00:00  speed 57.5x   
+Verify decode: attempt 1 exit code = 0
+Verification completed using: cuda
+Verification log saved to "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.log"
+The file seems clean (only harmless warnings, if any).
+Log renamed to: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247_NOERRORS.log"
+exitcode=0 
+==== Fri 01/23/2026 23:51:32.81 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.ts 
+Using ffmpeg : C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe
+Using ffprobe: C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+[h264 @ 00000164ae723f80] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000164ae723f80] no frame!
+
+Input : "G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.ts"
+Output: "G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.mkv"
+Mode  : TS + AAC (using -bsf:a aac_adtstoasc)
+
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+[h264 @ 00000200255f1e40] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000200255f1e40] no frame!
+Input #0, mpegts, from 'G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.ts':
+  Duration: 01:09:36.55, start: 6.350000, bitrate: 10002 kb/s
+  Program 256 
+    Metadata:
+      service_name    : Capture4ME
+      service_provider: Capture4ME
+  Stream #0:0[0x7d1]: Video: h264 (Constrained Baseline) ([27][0][0][0] / 0x001B), yuv420p(progressive), 1280x720, 50 fps, 50 tbr, 90k tbn, start 6.400000
+  Stream #0:1[0x7d2]: Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 192 kb/s, start 6.350000
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, matroska, to 'G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.mkv':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (Constrained Baseline) (H264 / 0x34363248), yuv420p(progressive), 1280x720, q=2-31, 50 fps, 50 tbr, 1k tbn
+  Stream #0:1: Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, stereo, fltp, 192 kb/s
+Press [q] to stop, [?] for help
+frame= 9017 fps=0.0 q=-1.0 size=  207616KiB time=00:03:01.91 bitrate=9349.6kbits/s speed= 345x elapsed=0:00:00.52    frame=18423 fps=17859 q=-1.0 size=  430336KiB time=00:06:10.21 bitrate=9522.5kbits/s speed= 359x elapsed=0:00:01.03    frame=27601 fps=17822 q=-1.0 size=  645888KiB time=00:09:13.87 bitrate=9553.0kbits/s speed= 358x elapsed=0:00:01.54    frame=37203 fps=18022 q=-1.0 size=  874496KiB time=00:12:25.87 bitrate=9604.7kbits/s speed= 361x elapsed=0:00:02.06    frame=46401 fps=17978 q=-1.0 size= 1088768KiB time=00:15:29.87 bitrate=9591.9kbits/s speed= 360x elapsed=0:00:02.58    frame=54215 fps=17514 q=-1.0 size= 1276160KiB time=00:18:05.99 bitrate=9626.5kbits/s speed= 351x elapsed=0:00:03.09    frame=63410 fps=17555 q=-1.0 size= 1487616KiB time=00:21:09.93 bitrate=9596.2kbits/s speed= 352x elapsed=0:00:03.61    frame=72125 fps=17479 q=-1.0 size= 1692672KiB time=00:24:04.21 bitrate=9601.4kbits/s speed= 350x elapsed=0:00:04.12    frame=81535 fps=17563 q=-1.0 size= 1913088KiB time=00:27:12.47 bitrate=9600.2kbits/s speed= 352x elapsed=0:00:04.64    frame=90722 fps=17591 q=-1.0 size= 2125056KiB time=00:30:16.15 bitrate=9585.4kbits/s speed= 352x elapsed=0:00:05.15    frame=98301 fps=17320 q=-1.0 size= 2300672KiB time=00:32:47.87 bitrate=9577.4kbits/s speed= 347x elapsed=0:00:05.67    frame=107626 fps=17384 q=-1.0 size= 2521856KiB time=00:35:54.23 bitrate=9590.0kbits/s speed= 348x elapsed=0:00:06.19    frame=116158 fps=17320 q=-1.0 size= 2723328KiB time=00:38:44.89 bitrate=9595.9kbits/s speed= 347x elapsed=0:00:06.70    frame=117201 fps=16234 q=-1.0 size= 2747136KiB time=00:39:05.87 bitrate=9593.3kbits/s speed= 325x elapsed=0:00:07.21    frame=117201 fps=15154 q=-1.0 size= 2747136KiB time=00:39:05.87 bitrate=9593.3kbits/s speed= 303x elapsed=0:00:07.73    frame=117201 fps=14207 q=-1.0 size= 2747136KiB time=00:39:05.87 bitrate=9593.3kbits/s speed= 284x elapsed=0:00:08.24    frame=117201 fps=13366 q=-1.0 size= 2747136KiB time=00:39:05.87 bitrate=9593.3kbits/s speed= 268x elapsed=0:00:08.76    frame=117201 fps=12618 q=-1.0 size= 2747136KiB time=00:39:05.87 bitrate=9593.3kbits/s speed= 253x elapsed=0:00:09.28    frame=117401 fps=11973 q=-1.0 size= 2751744KiB time=00:39:09.87 bitrate=9593.0kbits/s speed= 240x elapsed=0:00:09.80    frame=117501 fps=11395 q=-1.0 size= 2754048KiB time=00:39:11.87 bitrate=9592.9kbits/s speed= 228x elapsed=0:00:10.31    frame=117501 fps=10852 q=-1.0 size= 2754048KiB time=00:39:11.87 bitrate=9592.9kbits/s speed= 217x elapsed=0:00:10.82    frame=117501 fps=10358 q=-1.0 size= 2754048KiB time=00:39:11.87 bitrate=9592.9kbits/s speed= 207x elapsed=0:00:11.34    frame=117601 fps=9917 q=-1.0 size= 2756608KiB time=00:39:13.87 bitrate=9593.6kbits/s speed= 198x elapsed=0:00:11.85    frame=117801 fps=9519 q=-1.0 size= 2761216KiB time=00:39:17.87 bitrate=9593.4kbits/s speed= 191x elapsed=0:00:12.37    frame=119401 fps=9263 q=-1.0 size= 2799104KiB time=00:39:49.87 bitrate=9594.8kbits/s speed= 185x elapsed=0:00:12.88    frame=123862 fps=9240 q=-1.0 size= 2905856KiB time=00:41:18.97 bitrate=9602.7kbits/s speed= 185x elapsed=0:00:13.40    [aist#0:1/aac @ 000002002732bc80] timestamp discontinuity (stream id=2002): -261333, new offset= 261333
+frame=133501 fps=9591 q=-1.0 size= 3133184KiB time=00:44:31.71 bitrate=9607.0kbits/s speed= 192x elapsed=0:00:13.91    frame=143066 fps=9911 q=-1.0 size= 3357696KiB time=00:47:43.19 bitrate=9606.8kbits/s speed= 198x elapsed=0:00:14.43    frame=151649 fps=10143 q=-1.0 size= 3561472KiB time=00:50:34.93 bitrate=9613.3kbits/s speed= 203x elapsed=0:00:14.95    frame=161001 fps=10407 q=-1.0 size= 3779328KiB time=00:53:42.13 bitrate=9608.6kbits/s speed= 208x elapsed=0:00:15.47    frame=169101 fps=10577 q=-1.0 size= 3971328KiB time=00:56:24.13 bitrate=9613.4kbits/s speed= 212x elapsed=0:00:15.98    frame=178097 fps=10792 q=-1.0 size= 4183296KiB time=00:59:23.95 bitrate=9615.6kbits/s speed= 216x elapsed=0:00:16.50    frame=185501 fps=10899 q=-1.0 size= 4358656KiB time=01:01:52.13 bitrate=9618.8kbits/s speed= 218x elapsed=0:00:17.01    frame=185601 fps=10587 q=-1.0 size= 4360960KiB time=01:01:54.13 bitrate=9618.7kbits/s speed= 212x elapsed=0:00:17.53    frame=187201 fps=10373 q=-1.0 size= 4397312KiB time=01:02:26.13 bitrate=9616.0kbits/s speed= 208x elapsed=0:00:18.04    frame=188301 fps=10145 q=-1.0 size= 4422912KiB time=01:02:48.13 bitrate=9615.5kbits/s speed= 203x elapsed=0:00:18.56    frame=188501 fps=9881 q=-1.0 size= 4427520KiB time=01:02:52.13 bitrate=9615.3kbits/s speed= 198x elapsed=0:00:19.07    frame=197401 fps=10075 q=-1.0 size= 4635648KiB time=01:05:50.13 bitrate=9613.7kbits/s speed= 202x elapsed=0:00:19.59    frame=199901 fps=9940 q=-1.0 size= 4691200KiB time=01:06:40.13 bitrate=9607.3kbits/s speed= 199x elapsed=0:00:20.11    frame=199901 fps=9691 q=-1.0 size= 4691200KiB time=01:06:40.13 bitrate=9607.3kbits/s speed= 194x elapsed=0:00:20.62    frame=200401 fps=9478 q=-1.0 size= 4702208KiB time=01:06:50.13 bitrate=9605.8kbits/s speed= 190x elapsed=0:00:21.14    frame=202301 fps=9342 q=-1.0 size= 4747264KiB time=01:07:28.13 bitrate=9606.8kbits/s speed= 187x elapsed=0:00:21.65    frame=203101 fps=9159 q=-1.0 size= 4766208KiB time=01:07:44.13 bitrate=9607.2kbits/s speed= 183x elapsed=0:00:22.17    [out#0/matroska @ 0000020027118ec0] video:4793938KiB audio:96556KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.060706%
+frame=208732 fps=9253 q=-1.0 Lsize= 4893462KiB time=01:09:36.67 bitrate=9597.9kbits/s speed= 185x elapsed=0:00:22.55    
+
+SUCCESS.
+
+Running post-mortem verification pass...
+
+Verify decode: trying hwaccel=cuda
+Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]   0%  ETA 00:05:44  speed 36.1x   Verifying [hw=cuda]   0%  ETA 00:07:56  speed 36.3x   Verifying [hw=cuda]   1%  ETA 00:02:20  speed 36.3x   Verifying [hw=cuda]   1%  ETA 00:02:14  speed 36.4x   Verifying [hw=cuda]   1%  ETA 00:03:45  speed 36.5x   Verifying [hw=cuda]   2%  ETA 00:02:04  speed 36.5x   Verifying [hw=cuda]   2%  ETA 00:02:24  speed 36.5x   Verifying [hw=cuda]   2%  ETA 00:03:44  speed 36.6x   Verifying [hw=cuda]   2%  ETA 00:03:04  speed 36.6x   Verifying [hw=cuda]   4%  ETA 00:02:55  speed 36.6x   Verifying [hw=cuda]   4%  ETA 00:02:54  speed 36.7x   Verifying [hw=cuda]   5%  ETA 00:02:53  speed 36.7x   Verifying [hw=cuda]   5%  ETA 00:02:53  speed 36.7x   Verifying [hw=cuda]   6%  ETA 00:02:50  speed 36.7x   Verifying [hw=cuda]   6%  ETA 00:02:50  speed 36.8x   Verifying [hw=cuda]   7%  ETA 00:02:49  speed 36.8x   Verifying [hw=cuda]   7%  ETA 00:02:48  speed 36.8x   Verifying [hw=cuda]   7%  ETA 00:02:55  speed 36.8x   Verifying [hw=cuda]   8%  ETA 00:02:46  speed 36.8x   Verifying [hw=cuda]   9%  ETA 00:02:46  speed 36.8x   Verifying [hw=cuda]   9%  ETA 00:02:46  speed 36.8x   Verifying [hw=cuda]   9%  ETA 00:02:46  speed 36.8x   Verifying [hw=cuda]  10%  ETA 00:02:45  speed 36.7x   Verifying [hw=cuda]  10%  ETA 00:02:44  speed 36.7x   Verifying [hw=cuda]  11%  ETA 00:02:43  speed 36.6x   Verifying [hw=cuda]  11%  ETA 00:02:43  speed 36.6x   Verifying [hw=cuda]  12%  ETA 00:02:42  speed 36.6x   Verifying [hw=cuda]  12%  ETA 00:02:42  speed 36.5x   Verifying [hw=cuda]  13%  ETA 00:02:41  speed 36.6x   Verifying [hw=cuda]  13%  ETA 00:02:44  speed 36.6x   Verifying [hw=cuda]  13%  ETA 00:02:40  speed 36.6x   Verifying [hw=cuda]  14%  ETA 00:02:39  speed 36.6x   Verifying [hw=cuda]  14%  ETA 00:02:38  speed 36.6x   Verifying [hw=cuda]  14%  ETA 00:02:42  speed 36.6x   Verifying [hw=cuda]  15%  ETA 00:02:38  speed 36.6x   Verifying [hw=cuda]  16%  ETA 00:02:37  speed 36.6x   Verifying [hw=cuda]  16%  ETA 00:02:39  speed 36.6x   Verifying [hw=cuda]  17%  ETA 00:02:36  speed 36.6x   Verifying [hw=cuda]  17%  ETA 00:02:35  speed 36.6x   Verifying [hw=cuda]  18%  ETA 00:02:34  speed 36.6x   Verifying [hw=cuda]  18%  ETA 00:02:34  speed 36.6x   Verifying [hw=cuda]  18%  ETA 00:02:36  speed 36.7x   Verifying [hw=cuda]  19%  ETA 00:02:33  speed 36.7x   Verifying [hw=cuda]  19%  ETA 00:02:32  speed 36.7x   Verifying [hw=cuda]  20%  ETA 00:02:31  speed 36.7x   Verifying [hw=cuda]  20%  ETA 00:02:34  speed 36.7x   Verifying [hw=cuda]  21%  ETA 00:02:30  speed 36.7x   Verifying [hw=cuda]  21%  ETA 00:02:30  speed 36.7x   Verifying [hw=cuda]  21%  ETA 00:02:32  speed 36.7x   Verifying [hw=cuda]  22%  ETA 00:01:29  speed 36.7x   Verifying [hw=cuda]  23%  ETA 00:01:28  speed 36.7x   Verifying [hw=cuda]  23%  ETA 00:02:30  speed 36.7x   Verifying [hw=cuda]  23%  ETA 00:02:32  speed 36.7x   Verifying [hw=cuda]  24%  ETA 00:01:26  speed 36.7x   Verifying [hw=cuda]  24%  ETA 00:01:28  speed 36.7x   Verifying [hw=cuda]  25%  ETA 00:01:26  speed 36.7x   Verifying [hw=cuda]  25%  ETA 00:01:27  speed 36.7x   Verifying [hw=cuda]  25%  ETA 00:01:29  speed 36.7x   Verifying [hw=cuda]  26%  ETA 00:01:24  speed 36.7x   Verifying [hw=cuda]  27%  ETA 00:01:23  speed 36.7x   Verifying [hw=cuda]  27%  ETA 00:01:23  speed 36.7x   Verifying [hw=cuda]  27%  ETA 00:01:24  speed 36.7x   Verifying [hw=cuda]  27%  ETA 00:01:26  speed 36.7x   Verifying [hw=cuda]  28%  ETA 00:01:21  speed 36.6x   Verifying [hw=cuda]  28%  ETA 00:01:23  speed 36.6x   Verifying [hw=cuda]  29%  ETA 00:01:20  speed 36.6x   Verifying [hw=cuda]  29%  ETA 00:01:22  speed 36.6x   Verifying [hw=cuda]  29%  ETA 00:01:23  speed 36.6x   Verifying [hw=cuda]  31%  ETA 00:01:19  speed 36.6x   Verifying [hw=cuda]  31%  ETA 00:01:18  speed 36.6x   Verifying [hw=cuda]  31%  ETA 00:01:19  speed 36.6x   Verifying [hw=cuda]  31%  ETA 00:01:21  speed 36.6x   Verifying [hw=cuda]  33%  ETA 00:01:17  speed 36.6x   Verifying [hw=cuda]  33%  ETA 00:01:18  speed 36.6x   Verifying [hw=cuda]  33%  ETA 00:01:16  speed 36.6x   Verifying [hw=cuda]  33%  ETA 00:01:17  speed 36.6x   Verifying [hw=cuda]  34%  ETA 00:01:14  speed 36.6x   Verifying [hw=cuda]  35%  ETA 00:01:14  speed 36.6x   Verifying [hw=cuda]  35%  ETA 00:01:13  speed 36.6x   Verifying [hw=cuda]  36%  ETA 00:01:13  speed 36.6x   Verifying [hw=cuda]  36%  ETA 00:01:14  speed 36.7x   Verifying [hw=cuda]  36%  ETA 00:01:15  speed 36.7x   Verifying [hw=cuda]  37%  ETA 00:01:11  speed 36.7x   Verifying [hw=cuda]  37%  ETA 00:01:12  speed 36.7x   Verifying [hw=cuda]  38%  ETA 00:01:10  speed 36.7x   Verifying [hw=cuda]  38%  ETA 00:01:10  speed 36.7x   Verifying [hw=cuda]  39%  ETA 00:01:09  speed 36.7x   Verifying [hw=cuda]  39%  ETA 00:01:09  speed 36.7x   Verifying [hw=cuda]  39%  ETA 00:01:10  speed 36.6x   Verifying [hw=cuda]  40%  ETA 00:01:08  speed 36.6x   Verifying [hw=cuda]  41%  ETA 00:01:07  speed 36.6x   Verifying [hw=cuda]  41%  ETA 00:01:07  speed 36.6x   Verifying [hw=cuda]  42%  ETA 00:01:06  speed 36.6x   Verifying [hw=cuda]  42%  ETA 00:01:06  speed 36.6x   Verifying [hw=cuda]  42%  ETA 00:01:06  speed 36.6x   Verifying [hw=cuda]  43%  ETA 00:01:05  speed 36.6x   Verifying [hw=cuda]  43%  ETA 00:01:05  speed 36.6x   Verifying [hw=cuda]  44%  ETA 00:01:03  speed 36.6x   Verifying [hw=cuda]  44%  ETA 00:01:03  speed 36.6x   Verifying [hw=cuda]  45%  ETA 00:01:02  speed 36.6x   Verifying [hw=cuda]  45%  ETA 00:01:02  speed 36.6x   Verifying [hw=cuda]  45%  ETA 00:01:03  speed 36.6x   Verifying [hw=cuda]  46%  ETA 00:01:01  speed 36.6x   Verifying [hw=cuda]  46%  ETA 00:01:01  speed 36.6x   Verifying [hw=cuda]  47%  ETA 00:01:00  speed 36.6x   Verifying [hw=cuda]  47%  ETA 00:01:00  speed 36.6x   Verifying [hw=cuda]  48%  ETA 00:01:59  speed 36.6x   Verifying [hw=cuda]  48%  ETA 00:01:58  speed 36.6x   Verifying [hw=cuda]  49%  ETA 00:01:58  speed 36.5x   Verifying [hw=cuda]  49%  ETA 00:01:57  speed 36.5x   Verifying [hw=cuda]  49%  ETA 00:01:58  speed 36.5x   Verifying [hw=cuda]  50%  ETA 00:01:56  speed 36.5x   Verifying [hw=cuda]  50%  ETA 00:01:56  speed 36.5x   Verifying [hw=cuda]  50%  ETA 00:01:56  speed 36.5x   Verifying [hw=cuda]  51%  ETA 00:01:55  speed 36.5x   Verifying [hw=cuda]  52%  ETA 00:01:54  speed 36.5x   Verifying [hw=cuda]  52%  ETA 00:01:54  speed 36.5x   Verifying [hw=cuda]  53%  ETA 00:01:53  speed 36.5x   Verifying [hw=cuda]  53%  ETA 00:01:53  speed 36.5x   Verifying [hw=cuda]  53%  ETA 00:01:53  speed 36.5x   Verifying [hw=cuda]  53%  ETA 00:01:54  speed 36.5x   Verifying [hw=cuda]  55%  ETA 00:01:51  speed 36.6x   Verifying [hw=cuda]  55%  ETA 00:01:51  speed 36.6x   Verifying [hw=cuda]  55%  ETA 00:01:50  speed 36.6x   Verifying [hw=cuda]  56%  ETA 00:01:50  speed 36.6x   Verifying [hw=cuda]  56%  ETA 00:01:50  speed 36.6x   Verifying [hw=cuda]  57%  ETA 00:01:49  speed 36.6x   Verifying [hw=cuda]  57%  ETA 00:01:48  speed 36.6x   Verifying [hw=cuda]  58%  ETA 00:01:47  speed 36.6x   Verifying [hw=cuda]  58%  ETA 00:01:48  speed 36.6x   Verifying [hw=cuda]  59%  ETA 00:01:46  speed 36.6x   Verifying [hw=cuda]  59%  ETA 00:01:46  speed 36.6x   Verifying [hw=cuda]  60%  ETA 00:01:45  speed 36.6x   Verifying [hw=cuda]  60%  ETA 00:01:45  speed 36.6x   Verifying [hw=cuda]  60%  ETA 00:01:45  speed 36.6x   Verifying [hw=cuda]  61%  ETA 00:01:44  speed 36.6x   Verifying [hw=cuda]  61%  ETA 00:01:44  speed 36.6x   Verifying [hw=cuda]  62%  ETA 00:01:43  speed 36.6x   Verifying [hw=cuda]  62%  ETA 00:01:42  speed 36.6x   Verifying [hw=cuda]  63%  ETA 00:01:42  speed 36.6x   Verifying [hw=cuda]  63%  ETA 00:01:41  speed 36.6x   Verifying [hw=cuda]  64%  ETA 00:01:41  speed 36.6x   Verifying [hw=cuda]  64%  ETA 00:01:41  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:40  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:39  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:39  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:40  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:40  speed 36.6x   Verifying [hw=cuda]  65%  ETA 00:01:40  speed 36.6x   Verifying [hw=cuda]  67%  ETA 00:01:36  speed 36.6x   Verifying [hw=cuda]  68%  ETA 00:01:36  speed 36.6x   Verifying [hw=cuda]  68%  ETA 00:01:35  speed 36.6x   Verifying [hw=cuda]  69%  ETA 00:01:35  speed 36.6x   Verifying [hw=cuda]  69%  ETA 00:01:34  speed 36.6x   Verifying [hw=cuda]  70%  ETA 00:01:34  speed 36.6x   Verifying [hw=cuda]  70%  ETA 00:01:33  speed 36.6x   Verifying [hw=cuda]  71%  ETA 00:01:33  speed 36.6x   Verifying [hw=cuda]  71%  ETA 00:01:32  speed 36.6x   Verifying [hw=cuda]  71%  ETA 00:01:32  speed 36.6x   Verifying [hw=cuda]  72%  ETA 00:01:31  speed 36.6x   Verifying [hw=cuda]  72%  ETA 00:01:31  speed 36.6x   Verifying [hw=cuda]  73%  ETA 00:00:30  speed 36.6x   Verifying [hw=cuda]  73%  ETA 00:00:30  speed 36.6x   Verifying [hw=cuda]  73%  ETA 00:00:30  speed 36.6x   Verifying [hw=cuda]  74%  ETA 00:00:29  speed 36.6x   Verifying [hw=cuda]  74%  ETA 00:00:29  speed 36.6x   Verifying [hw=cuda]  75%  ETA 00:00:28  speed 36.6x   Verifying [hw=cuda]  75%  ETA 00:00:27  speed 36.6x   Verifying [hw=cuda]  75%  ETA 00:00:27  speed 36.6x   Verifying [hw=cuda]  76%  ETA 00:00:26  speed 36.6x   Verifying [hw=cuda]  77%  ETA 00:00:25  speed 36.6x   Verifying [hw=cuda]  77%  ETA 00:00:26  speed 36.6x   Verifying [hw=cuda]  78%  ETA 00:00:24  speed 36.6x   Verifying [hw=cuda]  78%  ETA 00:00:24  speed 36.6x   Verifying [hw=cuda]  78%  ETA 00:00:24  speed 36.6x   Verifying [hw=cuda]  79%  ETA 00:00:23  speed 36.6x   Verifying [hw=cuda]  80%  ETA 00:00:22  speed 36.6x   Verifying [hw=cuda]  80%  ETA 00:00:22  speed 36.6x   Verifying [hw=cuda]  80%  ETA 00:00:23  speed 36.6x   Verifying [hw=cuda]  81%  ETA 00:00:21  speed 36.6x   Verifying [hw=cuda]  81%  ETA 00:00:20  speed 36.6x   Verifying [hw=cuda]  82%  ETA 00:00:20  speed 36.6x   Verifying [hw=cuda]  82%  ETA 00:00:20  speed 36.6x   Verifying [hw=cuda]  82%  ETA 00:00:20  speed 36.6x   Verifying [hw=cuda]  83%  ETA 00:00:18  speed 36.6x   Verifying [hw=cuda]  84%  ETA 00:00:18  speed 36.6x   Verifying [hw=cuda]  84%  ETA 00:00:17  speed 36.6x   Verifying [hw=cuda]  85%  ETA 00:00:17  speed 36.6x   Verifying [hw=cuda]  85%  ETA 00:00:16  speed 36.6x   Verifying [hw=cuda]  85%  ETA 00:00:16  speed 36.6x   Verifying [hw=cuda]  86%  ETA 00:00:15  speed 36.6x   Verifying [hw=cuda]  86%  ETA 00:00:15  speed 36.6x   Verifying [hw=cuda]  87%  ETA 00:00:14  speed 36.6x   Verifying [hw=cuda]  87%  ETA 00:00:14  speed 36.6x   Verifying [hw=cuda]  87%  ETA 00:00:14  speed 36.6x   Verifying [hw=cuda]  88%  ETA 00:00:13  speed 36.6x   Verifying [hw=cuda]  88%  ETA 00:00:12  speed 36.6x   Verifying [hw=cuda]  89%  ETA 00:00:12  speed 36.6x   Verifying [hw=cuda]  89%  ETA 00:00:12  speed 36.6x   Verifying [hw=cuda]  89%  ETA 00:00:12  speed 36.6x   Verifying [hw=cuda]  90%  ETA 00:00:10  speed 36.6x   Verifying [hw=cuda]  91%  ETA 00:00:10  speed 36.6x   Verifying [hw=cuda]  91%  ETA 00:00:09  speed 36.6x   Verifying [hw=cuda]  92%  ETA 00:00:08  speed 36.6x   Verifying [hw=cuda]  92%  ETA 00:00:08  speed 36.6x   Verifying [hw=cuda]  93%  ETA 00:00:07  speed 36.6x   Verifying [hw=cuda]  93%  ETA 00:00:07  speed 36.6x   Verifying [hw=cuda]  93%  ETA 00:00:08  speed 36.6x   Verifying [hw=cuda]  93%  ETA 00:00:08  speed 36.6x   Verifying [hw=cuda]  94%  ETA 00:00:05  speed 36.6x   Verifying [hw=cuda]  94%  ETA 00:00:05  speed 36.6x   Verifying [hw=cuda]  95%  ETA 00:00:04  speed 36.6x   Verifying [hw=cuda]  96%  ETA 00:00:04  speed 36.6x   Verifying [hw=cuda]  96%  ETA 00:00:03  speed 36.6x   Verifying [hw=cuda]  96%  ETA 00:00:03  speed 36.6x   Verifying [hw=cuda]  96%  ETA 00:00:03  speed 36.6x   Verifying [hw=cuda]  98%  ETA 00:00:02  speed 36.6x   Verifying [hw=cuda]  98%  ETA 00:00:01  speed 36.6x   Verifying [hw=cuda]  98%  ETA 00:00:01  speed 36.6x   Verifying [hw=cuda]  99%  ETA 00:00:00  speed 36.6x   Verifying [hw=cuda]  99%  ETA 00:00:00  speed 36.6x   
+Verify decode: attempt 1 exit code = 0
+Verification completed using: cuda
+Verification log saved to "G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057.log"
+The file seems clean (only harmless warnings, if any).
+Log renamed to: "G:\Manual Recordings\Manual Recordings\SNL s51e10 - Finn Wolfhard_20260120_19402057_NOERRORS.log"
+exitcode=0 
+==== Fri 01/23/2026 23:59:11.46 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts 
+Using ffmpeg : C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe
+Using ffprobe: C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+[h264 @ 00000201989e3e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 00000201989e3e00] no frame!
+
+Input : "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts"
+Output: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv"
+Mode  : TS + AAC (using -bsf:a aac_adtstoasc)
+
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[h264 @ 000001f8f0791bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001f8f0791bc0] no frame!
+[mpegts @ 000001f8f0787a00] DTS discontinuity in stream 0: packet 1855 with DTS 3357270, packet 1856 with DTS 6956100
+[mpegts @ 000001f8f0787a00] DTS discontinuity in stream 1: packet 1453 with DTS 3357180, packet 1454 with DTS 7094250
+Input #0, mpegts, from 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts':
+  Duration: 00:01:35.81, start: 6.304000, bitrate: 5879 kb/s
+  Program 256 
+    Metadata:
+      service_name    : Capture4ME
+      service_provider: Capture4ME
+  Stream #0:0[0x7d1]: Video: h264 (Constrained Baseline) ([27][0][0][0] / 0x001B), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], 59.94 fps, 59.94 tbr, 90k tbn, start 6.356000
+  Stream #0:1[0x7d2]: Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 192 kb/s, start 6.304000
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, matroska, to 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (Constrained Baseline) (H264 / 0x34363248), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], q=2-31, 59.94 fps, 59.94 tbr, 1k tbn
+  Stream #0:1: Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, stereo, fltp, 192 kb/s
+Press [q] to stop, [?] for help
+[vist#0:0/h264 @ 000001f8f0f0ccc0] timestamp discontinuity (stream id=2001): 39970322, new offset= -39970322
+[out#0/matroska @ 000001f8f0786b00] video:62508KiB audio:1254KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.069563%
+frame= 3238 fps=0.0 q=-1.0 Lsize=   63806KiB time=00:00:55.76 bitrate=9373.9kbits/s speed= 362x elapsed=0:00:00.15    
+
+SUCCESS.
+
+Running post-mortem verification pass...
+
+Verify decode: trying hwaccel=cuda
+Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]   0%  ETA ??:??:??  speed ?       Verifying [hw=cuda]  29%  ETA 00:00:02  speed 31.8x   Verifying [hw=cuda]  29%  ETA 00:00:03  speed 30.1x   Verifying [hw=cuda]  86%  ETA 00:00:00  speed 30.8x   
+Verify decode: attempt 1 exit code = 0
+Verification completed using: cuda
+Verification log saved to "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.log"
+The file seems clean (only harmless warnings, if any).
+Log renamed to: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247_NOERRORS.log"
+exitcode=0 
+==== Sat 01/24/2026  0:12:25.50 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts 
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+exitcode=1 
+==== Sat 01/24/2026  0:12:40.98 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts 
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+exitcode=1 
+==== Sat 01/24/2026  0:15:02.02 ==== 
+whoami: 
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts 
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+exitcode=1 
+==== Sat 01/24/2026  0:15:57.57 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+exitcode=
+==== Sat 01/24/2026  0:16:53.02 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+==== Sat 01/24/2026  0:17:38.71 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+==== Sat 01/24/2026  0:17:54.80 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:686 char:22
++   Write-ProgressDone()
++                      ~
+An expression was expected after '('.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ExpectedExpression
+ 
+==== Sat 01/24/2026  0:18:56.42 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+Using ffmpeg : C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe
+Using ffprobe: C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+[h264 @ 0000016cbba93e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000016cbba93e00] no frame!
+
+Input : "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts"
+Output: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv"
+Mode  : TS + AAC (using -bsf:a aac_adtstoasc)
+
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[h264 @ 000001b2a4181bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001b2a4181bc0] no frame!
+[mpegts @ 000001b2a4177a00] DTS discontinuity in stream 0: packet 1855 with DTS 3357270, packet 1856 with DTS 6956100
+[mpegts @ 000001b2a4177a00] DTS discontinuity in stream 1: packet 1453 with DTS 3357180, packet 1454 with DTS 7094250
+Input #0, mpegts, from 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts':
+  Duration: 00:01:35.81, start: 6.304000, bitrate: 5879 kb/s
+  Program 256 
+    Metadata:
+      service_name    : Capture4ME
+      service_provider: Capture4ME
+  Stream #0:0[0x7d1]: Video: h264 (Constrained Baseline) ([27][0][0][0] / 0x001B), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], 59.94 fps, 59.94 tbr, 90k tbn, start 6.356000
+  Stream #0:1[0x7d2]: Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 192 kb/s, start 6.304000
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, matroska, to 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (Constrained Baseline) (H264 / 0x34363248), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], q=2-31, 59.94 fps, 59.94 tbr, 1k tbn
+  Stream #0:1: Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, stereo, fltp, 192 kb/s
+Press [q] to stop, [?] for help
+[vist#0:0/h264 @ 000001b2a473ccc0] timestamp discontinuity (stream id=2001): 39970322, new offset= -39970322
+[out#0/matroska @ 000001b2a4176b00] video:62508KiB audio:1254KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.069563%
+frame= 3238 fps=0.0 q=-1.0 Lsize=   63806KiB time=00:00:55.76 bitrate=9373.9kbits/s speed= 338x elapsed=0:00:00.16    
+
+SUCCESS.
+
+Running post-mortem verification pass...
+The property 'Used' cannot be found on this object. Verify that the property exists.
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:759 char:45
++ Write-Info "Verification completed using: $($verifyResult.Used)"
++                                             ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+Verification completed using: 
+Verification log saved to "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.log"
+The property 'ExitCode' cannot be found on this object. Verify that the property exists.
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:763 char:1
++ Complete-VerificationLog -VerifyExit $verifyResult.ExitCode -LogPath  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+==== Sat 01/24/2026  0:25:53.83 ====
+whoami:
+lorien\assaf
+IN=G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts
+Using ffmpeg : C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe
+Using ffprobe: C:\Users\Assaf\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+[h264 @ 000001fbedd73e00] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 000001fbedd73e00] no frame!
+
+Input : "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts"
+Output: "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv"
+Mode  : TS + AAC (using -bsf:a aac_adtstoasc)
+
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[h264 @ 0000027c78751bc0] non-existing PPS 0 referenced
+    Last message repeated 1 times
+[h264 @ 0000027c78751bc0] no frame!
+[mpegts @ 0000027c78747a00] DTS discontinuity in stream 0: packet 1855 with DTS 3357270, packet 1856 with DTS 6956100
+[mpegts @ 0000027c78747a00] DTS discontinuity in stream 1: packet 1453 with DTS 3357180, packet 1454 with DTS 7094250
+Input #0, mpegts, from 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.ts':
+  Duration: 00:01:35.81, start: 6.304000, bitrate: 5879 kb/s
+  Program 256 
+    Metadata:
+      service_name    : Capture4ME
+      service_provider: Capture4ME
+  Stream #0:0[0x7d1]: Video: h264 (Constrained Baseline) ([27][0][0][0] / 0x001B), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], 59.94 fps, 59.94 tbr, 90k tbn, start 6.356000
+  Stream #0:1[0x7d2]: Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 192 kb/s, start 6.304000
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, matroska, to 'G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.mkv':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (Constrained Baseline) (H264 / 0x34363248), yuv420p(progressive), 720x480 [SAR 10:11 DAR 15:11], q=2-31, 59.94 fps, 59.94 tbr, 1k tbn
+  Stream #0:1: Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, stereo, fltp, 192 kb/s
+Press [q] to stop, [?] for help
+[vist#0:0/h264 @ 0000027c78edccc0] timestamp discontinuity (stream id=2001): 39970322, new offset= -39970322
+[out#0/matroska @ 0000027c78746b00] video:62508KiB audio:1254KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.069563%
+frame= 3238 fps=0.0 q=-1.0 Lsize=   63806KiB time=00:00:55.76 bitrate=9373.9kbits/s speed= 357x elapsed=0:00:00.15    
+
+SUCCESS.
+
+Running post-mortem verification pass...
+The property 'Used' cannot be found on this object. Verify that the property exists.
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:762 char:45
++ Write-Info "Verification completed using: $($verifyResult.Used)"
++                                             ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 
+Verification completed using: 
+Verification log saved to "G:\Manual Recordings\Manual Recordings\Default_20250319_22462247.log"
+The property 'ExitCode' cannot be found on this object. Verify that the property exists.
+At E:\DriveE\ASSAF\program\Utils\fix_video_file.ps1:766 char:1
++ Complete-VerificationLog -VerifyExit $verifyResult.ExitCode -LogPath  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], PropertyNotFoundException
+    + FullyQualifiedErrorId : PropertyNotFoundStrict
+ 

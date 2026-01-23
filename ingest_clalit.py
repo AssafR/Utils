@@ -18,6 +18,7 @@ def ingest_files(**kwargs):
     dirpath = pathlib.Path(dir_name)
     files = list(dirpath.glob(filename_template))
     combined_df = process_files(previous_df, files)
+    print(f'Writing file: {output_file}')
     combined_df.to_csv(output_file, encoding='utf_8_sig')
 
 
