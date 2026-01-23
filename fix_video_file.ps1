@@ -1,9 +1,182 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true, Position=0)]
   [string]$InputFile
 )
 
 Set-StrictMode -Version 2
+
+function Assert-True([bool]$Condition, [string]$Message) {
+  if (-not $Condition) { throw "ASSERT: $Message" }
+}
+
+function Assert-NonEmptyString([string]$Value, [string]$Name) {
+  if ([string]::IsNullOrWhiteSpace($Value)) {
+    throw "Invalid ${Name}: value is empty."
+  }
+}
+
+function Ensure-ExistingPath([string]$Path, [string]$Name) {
+  Assert-NonEmptyString $Path $Name
+  if (-not (Test-Path -LiteralPath $Path)) {
+    throw "Invalid ${Name}: path not found: $Path"
+  }
+}
+
+function Convert-MsToUs([int64]$Ms) {
+  Assert-True ($Ms -ge 0) "Milliseconds must be >= 0."
+  return $Ms * 1000
+}
+
+function Convert-TimeSpanToUs([TimeSpan]$Ts) {
+  Assert-True ($Ts -ge [TimeSpan]::Zero) "Timespan must be non-negative."
+  return [int64]($Ts.TotalSeconds * 1000000.0)
+}
+
+function Convert-SecondsToUs([double]$Sec) {
+  if ([double]::IsNaN($Sec) -or [double]::IsInfinity($Sec)) {
+    throw "Duration seconds is not finite: $Sec"
+  }
+  Assert-True ($Sec -ge 0) "Duration seconds must be >= 0."
+  if ($Sec -gt 3155760000) {
+    throw "Duration seconds is unrealistically large: $Sec"
+  }
+  return [int64]($Sec * 1000000.0)
+}
+
+function Format-SecondsAsHms([int64]$Seconds) {
+  Assert-True ($Seconds -ge 0) "Seconds must be non-negative."
+  $hrs  = [int]($Seconds / 3600)
+  $mins = [int](($Seconds % 3600) / 60)
+  $secs = [int]($Seconds % 60)
+  return ("{0:00}:{1:00}:{2:00}" -f $hrs, $mins, $secs)
+}
+
+function Calculate-ProgressPercent([int64]$OutTimeUs, [int64]$DurUs) {
+  Assert-True ($DurUs -gt 0) "Duration must be > 0 to compute progress percent."
+  Assert-True ($OutTimeUs -ge 0) "outTimeUs must be >= 0."
+  $pct = [math]::Floor(($OutTimeUs / [double]$DurUs) * 100)
+  $pct = [math]::Max([double]0, [math]::Min([double]100, $pct))
+  return [int]$pct
+}
+
+function Calculate-EtaString([int64]$OutTimeUs, [int64]$DurUs, [double]$ElapsedSec) {
+  Assert-True ($DurUs -gt 0) "Duration must be > 0 to compute ETA."
+  Assert-True ($OutTimeUs -ge 0) "outTimeUs must be >= 0."
+
+  $elapsed = [math]::Max(0.001, $ElapsedSec)
+  $rateUsPerSec = $OutTimeUs / $elapsed
+  if ($rateUsPerSec -le 0) { return '??:??:??' }
+
+  $remainUs  = [math]::Max([int64]0, ($DurUs - $OutTimeUs))
+  $remainSec = [math]::Floor($remainUs / $rateUsPerSec)
+  if ($remainSec -lt 0 -or $remainSec -ge 3155760000) { return '??:??:??' }
+
+  return Format-SecondsAsHms $remainSec
+}
+
+function Should-RenderProgress([int]$Percent, [int]$LastPercent, [datetime]$Now, [datetime]$LastRender) {
+  Assert-True ($Percent -ge 0 -and $Percent -le 100) "Percent must be 0..100."
+  $delta = ($Now - $LastRender).TotalSeconds
+  return ($Percent -ne $LastPercent) -or ($delta -ge 0.5)
+}
+
+function Get-ProgressSnapshot([int64]$DurUs, [int64]$OutTimeUs, [double]$ElapsedSec) {
+  $pct = Calculate-ProgressPercent -OutTimeUs $OutTimeUs -DurUs $DurUs
+  $eta = Calculate-EtaString -OutTimeUs $OutTimeUs -DurUs $DurUs -ElapsedSec $ElapsedSec
+  return @{ Percent = $pct; Eta = $eta }
+}
+
+function Try-UpdateProgressStateFromLine([string]$Line) {
+  if ($null -eq $Line) { return $false }
+  if ($Line -notmatch '^(?<k>[^=]+)=(?<v>.*)$') { return $false }
+
+  $k = $Matches.k
+  $v = $Matches.v
+
+  switch ($k) {
+    'out_time_us' {
+      $tmp = [int64]0
+      if ([int64]::TryParse($v, [ref]$tmp)) {
+        Assert-True ($tmp -ge 0) "out_time_us must be >= 0."
+        $script:outTimeUs = $tmp
+      }
+      return $true
+    }
+    'out_time_ms' {
+      $tmp = [int64]0
+      if ([int64]::TryParse($v, [ref]$tmp)) {
+        $script:outTimeUs = Convert-MsToUs $tmp
+      }
+      return $true
+    }
+    'out_time' {
+      $ts = [TimeSpan]::Zero
+      if ([TimeSpan]::TryParse($v, [ref]$ts)) {
+        $script:outTimeUs = Convert-TimeSpanToUs $ts
+      }
+      return $true
+    }
+    'speed' {
+      $script:speed = if ($v) { $v } else { '?' }
+      return $true
+    }
+    'progress' {
+      return $true
+    }
+    default { return $false }
+  }
+}
+
+function Get-ResolvedInputPath([string]$InputFile) {
+  Assert-NonEmptyString $InputFile 'InputFile'
+  try {
+    return (Resolve-Path -Path $InputFile -ErrorAction Stop).Path
+  } catch {
+    throw "Input file not found: $InputFile"
+  }
+}
+
+function Get-OutputPaths([string]$InputPath) {
+  Ensure-ExistingPath $InputPath 'Input file'
+  $dir  = Split-Path -Path $InputPath -Parent
+  $base = [IO.Path]::GetFileNameWithoutExtension($InputPath)
+  $ext  = [IO.Path]::GetExtension($InputPath)
+
+  Assert-NonEmptyString $base 'Input base name'
+  Assert-NonEmptyString $ext 'Input extension'
+
+  if ($ext -ieq '.mkv') { $outPath = Join-Path $dir ($base + '_.mkv') }
+  else                  { $outPath = Join-Path $dir ($base + '.mkv')  }
+
+  $logPath  = [IO.Path]::ChangeExtension($outPath, '.log')
+  $baseLog  = [IO.Path]::Combine(
+    [IO.Path]::GetDirectoryName($outPath),
+    [IO.Path]::GetFileNameWithoutExtension($outPath)
+  )
+
+  return @{
+    InPath  = $InputPath
+    Dir     = $dir
+    Base    = $base
+    Ext     = $ext
+    OutPath = $outPath
+    LogPath = $logPath
+    BaseLog = $baseLog
+  }
+}
+
+function Get-AacBsfNeeded([string]$InputPath, [string]$Extension) {
+  $tsLikeExt = @('.ts','.m2ts','.mts','.trp','.tp','.vob')
+  if ($tsLikeExt -notcontains $Extension.ToLowerInvariant()) { return $false }
+
+  try {
+    $aCodec = & ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 -- $InputPath
+    return ($aCodec.Trim().ToLowerInvariant() -eq 'aac')
+  } catch {
+    Write-Warning "Failed to detect audio codec; defaulting to no AAC bitstream filter. $($_.Exception.Message)"
+    return $false
+  }
+}
 
 function Quote-Arg([string]$s) {
   if ($null -eq $s) { return '' }
@@ -22,15 +195,185 @@ function Get-FfmpegHwaccels {
   }
 }
 
-function Get-FormatDurationSec([string]$path) {
+function Get-FormatDurationSec([string]$Path) {
+  Ensure-ExistingPath $Path 'Media file'
   $durSec = 0.0
+
   try {
-    $d = & ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 -- $path
-    # Locale-safe parse (handles decimal dot even on comma-decimal locales)
+    $d = & ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 -- $Path
     $ci = [System.Globalization.CultureInfo]::InvariantCulture
-    [void][double]::TryParse($d.Trim(), [System.Globalization.NumberStyles]::Float, $ci, [ref]$durSec)
-  } catch { $durSec = 0.0 }
+    if (-not [double]::TryParse($d.Trim(), [System.Globalization.NumberStyles]::Float, $ci, [ref]$durSec)) {
+      Write-Warning "Unable to parse duration from ffprobe output: '$d'"
+      $durSec = 0.0
+    }
+  } catch {
+    Write-Warning "ffprobe failed to read duration: $($_.Exception.Message)"
+    $durSec = 0.0
+  }
+
+  if ($durSec -lt 0) {
+    Write-Warning "Duration is negative ($durSec). Using 0."
+    $durSec = 0.0
+  }
+
   return $durSec
+}
+
+function Get-FormatDurationUs([string]$Path) {
+  $durSec = Get-FormatDurationSec $Path
+  if ($durSec -le 0) { return [int64]0 }
+  return Convert-SecondsToUs $durSec
+}
+
+function Get-VerifyCandidates([string[]]$AvailableHw) {
+  if ($null -eq $AvailableHw) { $AvailableHw = @() }
+
+  $candidates = @()
+  if ($AvailableHw -contains 'd3d11va') { $candidates += ,@('d3d11va', $null) }
+  if ($AvailableHw -contains 'cuda')    { $candidates += ,@('cuda',    'cuda') }
+  if ($AvailableHw -contains 'qsv')     { $candidates += ,@('qsv',     $null) }
+
+  $candidates += ,@($null, $null)
+
+  foreach ($c in $candidates) {
+    Assert-True ($c -is [System.Array] -and $c.Count -ge 2) "Verify candidate must be a 2-item array."
+  }
+
+  return $candidates
+}
+
+function Get-LogLinesSafe([string]$LogPath) {
+  if (-not (Test-Path -LiteralPath $LogPath)) { return @() }
+  try {
+    return Get-Content -LiteralPath $LogPath -ErrorAction Stop
+  } catch {
+    Write-Warning "Failed reading log file: $LogPath. $($_.Exception.Message)"
+    return @()
+  }
+}
+
+function Get-MeaningfulLogLines([string[]]$LogLines, [string[]]$HarmlessPatterns) {
+  if ($null -eq $LogLines) { return @() }
+  if ($null -eq $HarmlessPatterns -or $HarmlessPatterns.Count -eq 0) { return @($LogLines) }
+
+  return @($LogLines | Where-Object {
+    $line = $_
+    -not ($HarmlessPatterns | Where-Object { $line -match $_ })
+  })
+}
+
+function Rename-Log([string]$LogPath, [string]$NewLog) {
+  Assert-NonEmptyString $NewLog 'New log path'
+  if (Test-Path -LiteralPath $LogPath) {
+    Move-Item -LiteralPath $LogPath -Destination $NewLog -Force
+  } else {
+    New-Item -Path $NewLog -ItemType File -Force | Out-Null
+  }
+}
+
+function Invoke-TriageRemux([string]$InputPath, [string]$OutputPath, [bool]$NeedAacBsf) {
+  Ensure-ExistingPath $InputPath 'Input file'
+  Assert-NonEmptyString $OutputPath 'Output path'
+
+  $ffArgs = @(
+    '-hide_banner','-y',
+    '-fflags','+genpts',
+    '-err_detect','ignore_err',
+    '-probesize','100M','-analyzeduration','100M',
+    '-ignore_unknown','-copy_unknown',
+    '-i', $InputPath,
+    '-map','0','-map_metadata','0','-map_chapters','0',
+    '-c','copy',
+    '-start_at_zero',
+    '-max_interleave_delta','0'
+  )
+
+  if ($NeedAacBsf) { $ffArgs += @('-bsf:a','aac_adtstoasc') }
+  $ffArgs += $OutputPath
+
+  $LASTEXITCODE = 0
+  & ffmpeg @ffArgs
+  if ($LASTEXITCODE -ne 0) {
+    throw "Triage remux failed with exit code $LASTEXITCODE."
+  }
+}
+
+function Invoke-Verification([string]$OutPath, [string]$LogPath, [int64]$DurUs) {
+  Ensure-ExistingPath $OutPath 'Output file'
+  Assert-NonEmptyString $LogPath 'Log path'
+  Assert-True ($DurUs -ge 0) "Duration microseconds must be >= 0."
+
+  $availableHw = Get-FfmpegHwaccels
+  $verifyCandidates = Get-VerifyCandidates $availableHw
+
+  $verifyExit = $null
+  $used = 'CPU'
+
+  foreach ($c in $verifyCandidates) {
+    $hw  = $c[0]
+    $fmt = $c[1]
+
+    if ($hw) { Write-Host "Verify decode: trying hwaccel=$hw" }
+    else     { Write-Host 'Verify decode: trying CPU' }
+
+    $verifyExit = Run-Verify -outPath $OutPath -logPath $LogPath -durUs $DurUs -hwaccel $hw -hwoutfmt $fmt
+
+    if ($verifyExit -eq 0) {
+      $used = if ($hw) { $hw } else { 'CPU' }
+      break
+    }
+
+    if ($hw) {
+      Remove-Item -LiteralPath $LogPath -Force -ErrorAction SilentlyContinue
+      Start-Sleep -Milliseconds 100
+      continue
+    } else {
+      break
+    }
+  }
+
+  Assert-True ($null -ne $verifyExit) 'Verification did not produce an exit code.'
+  return @{ ExitCode = $verifyExit; Used = $used }
+}
+
+function Finalize-VerificationLog(
+  [int]$VerifyExit,
+  [string]$LogPath,
+  [string]$OutPath,
+  [string[]]$HarmlessPatterns
+) {
+  $baseLog = [System.IO.Path]::Combine(
+    [System.IO.Path]::GetDirectoryName($OutPath),
+    [System.IO.Path]::GetFileNameWithoutExtension($OutPath)
+  )
+
+  Assert-NonEmptyString $baseLog 'Base log path'
+
+  $logLines = Get-LogLinesSafe $LogPath
+  $meaningfulLines = Get-MeaningfulLogLines -LogLines $logLines -HarmlessPatterns $HarmlessPatterns
+
+  if ($VerifyExit -ne 0) {
+    $newLog = "${baseLog}_WITHERRORS.log"
+    Rename-Log -LogPath $LogPath -NewLog $newLog
+    Write-Host "Verification failed (exit $VerifyExit)."
+    Write-Host "Log renamed to: `"$newLog`""
+    exit $VerifyExit
+  }
+
+  if ($meaningfulLines.Count -eq 0) {
+    $newLog = "${baseLog}_NOERRORS.log"
+    Rename-Log -LogPath $LogPath -NewLog $newLog
+    Write-Host 'The file seems clean (only harmless warnings, if any).'
+    Write-Host "Log renamed to: `"$newLog`""
+  } else {
+    $newLog = "${baseLog}_WITHERRORS.log"
+    Rename-Log -LogPath $LogPath -NewLog $newLog
+    Write-Host 'Verification produced meaningful warnings/errors.'
+    Write-Host "Log renamed to: `"$newLog`""
+    Write-Host ''
+    Write-Host 'First issues detected:'
+    $meaningfulLines | Select-Object -First 8 | ForEach-Object { Write-Host "  $_" }
+  }
 }
 
 function Run-Verify(
@@ -40,7 +383,10 @@ function Run-Verify(
   [string]$hwaccel,
   [string]$hwoutfmt
 ) {
-  # Clear log for this attempt
+  Assert-NonEmptyString $outPath 'Output path'
+  Assert-NonEmptyString $logPath 'Log path'
+  Assert-True ($durUs -ge 0) "Duration microseconds must be >= 0."
+
   New-Item -Path $logPath -ItemType File -Force | Out-Null
 
   $argList = @()
@@ -71,7 +417,6 @@ function Run-Verify(
   $logWriter = New-Object System.IO.StreamWriter($logPath, $false, [System.Text.Encoding]::UTF8)
   $logWriter.AutoFlush = $true
 
-  # shared state (updated by parsing -progress output)
   $script:outTimeUs = [int64]0
   $script:speed = '?'
 
@@ -80,92 +425,28 @@ function Run-Verify(
   $sw = [System.Diagnostics.Stopwatch]::StartNew()
   $lastPct = -1
   $lastRender = [datetime]::UtcNow
-  $eta = '??:??:??'
 
-  $sawEnd = $false
   while (-not $p.HasExited) {
-    # Drain stdout (ffmpeg -progress pipe:1)
     while ($p.StandardOutput.Peek() -ge 0) {
       $line = $p.StandardOutput.ReadLine()
       if ($null -eq $line) { break }
-      if ($line -match '^(?<k>[^=]+)=(?<v>.*)$') {
-        $k = $Matches.k; $v = $Matches.v
-        if ($k -eq 'out_time_us') {
-          [void][int64]::TryParse($v, [ref]$script:outTimeUs)
-        } elseif ($k -eq 'out_time_ms') {
-          $tmp = [int64]0
-          if ([int64]::TryParse($v, [ref]$tmp)) { $script:outTimeUs = $tmp * 1000 }
-        } elseif ($k -eq 'out_time') {
-          $ts = [TimeSpan]::Zero
-          if ([TimeSpan]::TryParse($v, [ref]$ts)) {
-            $script:outTimeUs = [int64]($ts.TotalSeconds * 1000000.0)
-          }
-        } elseif ($k -eq 'speed') {
-          if ($v) { $script:speed = $v } else { $script:speed = '?' }
-        } elseif ($k -eq 'progress' -and $v -eq 'end') {
-          $sawEnd = $true
-        }
-      }
+      [void](Try-UpdateProgressStateFromLine $line)
     }
 
-    # Drain stderr (warnings/errors) into log.
-    # Some ffmpeg builds may emit -progress lines to stderr; parse them too.
     while ($p.StandardError.Peek() -ge 0) {
       $eLine = $p.StandardError.ReadLine()
       if ($null -eq $eLine) { break }
-
-      # If this looks like a progress line, update state and do not log it.
-      if ($eLine -match '^(?<k>[^=]+)=(?<v>.*)$') {
-        $k2 = $Matches.k; $v2 = $Matches.v
-        if ($k2 -eq 'out_time_us') {
-          [void][int64]::TryParse($v2, [ref]$script:outTimeUs)
-          continue
-        } elseif ($k2 -eq 'out_time_ms') {
-          $tmp2 = [int64]0
-          if ([int64]::TryParse($v2, [ref]$tmp2)) { $script:outTimeUs = $tmp2 * 1000 }
-          continue
-        } elseif ($k2 -eq 'out_time') {
-          $ts2 = [TimeSpan]::Zero
-          if ([TimeSpan]::TryParse($v2, [ref]$ts2)) { $script:outTimeUs = [int64]($ts2.TotalSeconds * 1000000.0) }
-          continue
-        } elseif ($k2 -eq 'speed') {
-          if ($v2) { $script:speed = $v2 } else { $script:speed = '?' }
-          continue
-        } elseif ($k2 -eq 'progress') {
-          continue
-        }
-      }
-
+      if (Try-UpdateProgressStateFromLine $eLine) { continue }
       try { $logWriter.WriteLine($eLine) } catch { }
     }
 
     if ($durUs -gt 0) {
-      $pctD = [math]::Max([double]0, [math]::Min([double]100, [math]::Floor((($script:outTimeUs / [double]$durUs) * 100))))
-      $pct = [int]$pctD
-
+      $snapshot = Get-ProgressSnapshot -DurUs $durUs -OutTimeUs $script:outTimeUs -ElapsedSec $sw.Elapsed.TotalSeconds
       $now = [datetime]::UtcNow
-      $shouldRender = ($pct -ne $lastPct) -or (($now - $lastRender).TotalSeconds -ge 0.5)
 
-      if ($shouldRender) {
-        $eta = '??:??:??'
-        $elapsedSec = [math]::Max(0.001, $sw.Elapsed.TotalSeconds)
-        $rateUsPerSec = $script:outTimeUs / $elapsedSec
-
-        if ($rateUsPerSec -gt 0) {
-          $remainUs  = [math]::Max([int64]0, ($durUs - $script:outTimeUs))
-          $remainSec = [math]::Floor($remainUs / $rateUsPerSec)
-		if ($remainSec -ge 0 -and $remainSec -lt 3155760000) {  # < ~100 years, sanity guard
-		  $hrs = [int]($remainSec / 3600)
-		  $mins = [int](($remainSec % 3600) / 60)
-		  $secs = [int]($remainSec % 60)
-		  $eta = ("{0:00}:{1:00}:{2:00}" -f $hrs, $mins, $secs)
-		} else {
-		  $eta = "??:??:??"
-		}
-        }
-
-        Write-Host ("`rVerifying: {0,3}%  ETA {1}  speed {2,-8}" -f $pct, $eta, $script:speed) -NoNewline
-        $lastPct = $pct
+      if (Should-RenderProgress -Percent $snapshot.Percent -LastPercent $lastPct -Now $now -LastRender $lastRender) {
+        Write-Host ("`rVerifying: {0,3}%  ETA {1}  speed {2,-8}" -f $snapshot.Percent, $snapshot.Eta, $script:speed) -NoNewline
+        $lastPct = $snapshot.Percent
         $lastRender = $now
       }
     } else {
@@ -182,33 +463,11 @@ function Run-Verify(
   $sw.Stop()
   Write-Host ''
 
-  # one last drain after exit
   try {
     while (-not $p.StandardError.EndOfStream) {
       $eLine = $p.StandardError.ReadLine()
       if ($null -eq $eLine) { break }
-
-      if ($eLine -match '^(?<k>[^=]+)=(?<v>.*)$') {
-        $k2 = $Matches.k; $v2 = $Matches.v
-        if ($k2 -eq 'out_time_us') {
-          [void][int64]::TryParse($v2, [ref]$script:outTimeUs)
-          continue
-        } elseif ($k2 -eq 'out_time_ms') {
-          $tmp2 = [int64]0
-          if ([int64]::TryParse($v2, [ref]$tmp2)) { $script:outTimeUs = $tmp2 * 1000 }
-          continue
-        } elseif ($k2 -eq 'out_time') {
-          $ts2 = [TimeSpan]::Zero
-          if ([TimeSpan]::TryParse($v2, [ref]$ts2)) { $script:outTimeUs = [int64]($ts2.TotalSeconds * 1000000.0) }
-          continue
-        } elseif ($k2 -eq 'speed') {
-          if ($v2) { $script:speed = $v2 } else { $script:speed = '?' }
-          continue
-        } elseif ($k2 -eq 'progress') {
-          continue
-        }
-      }
-
+      if (Try-UpdateProgressStateFromLine $eLine) { continue }
       try { $logWriter.WriteLine($eLine) } catch { }
     }
   } catch { }
@@ -220,28 +479,15 @@ function Run-Verify(
 }
 
 # ----------------------
-# Resolve paths & output naming
+# Main flow
 # ----------------------
-$inPath = (Resolve-Path -Path $InputFile).Path
-$dir    = Split-Path -Path $inPath -Parent
-$base   = [IO.Path]::GetFileNameWithoutExtension($inPath)
-$ext    = [IO.Path]::GetExtension($inPath)
+$paths = Get-OutputPaths -InputPath (Get-ResolvedInputPath $InputFile)
+$inPath  = $paths.InPath
+$outPath = $paths.OutPath
+$logPath = $paths.LogPath
+$ext     = $paths.Ext
 
-if ($ext -ieq '.mkv') { $outPath = Join-Path $dir ($base + '_.mkv') }
-else                  { $outPath = Join-Path $dir ($base + '.mkv')  }
-
-$logPath = [IO.Path]::ChangeExtension($outPath, '.log')
-
-# Detect AAC ADTS->ASC need for TS-like inputs
-$tsLikeExt = @('.ts','.m2ts','.mts','.trp','.tp','.vob')
-$needAacBsf = $false
-
-if ($tsLikeExt -contains $ext.ToLowerInvariant()) {
-  try {
-    $aCodec = & ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 -- $inPath
-    if ($aCodec.Trim().ToLowerInvariant() -eq 'aac') { $needAacBsf = $true }
-  } catch { $needAacBsf = $false }
-}
+$needAacBsf = Get-AacBsfNeeded -InputPath $inPath -Extension $ext
 
 Write-Host ''
 Write-Host "Input : `"$inPath`""
@@ -250,87 +496,20 @@ if ($needAacBsf) { Write-Host 'Mode  : TS + AAC (using -bsf:a aac_adtstoasc)' }
 else             { Write-Host 'Mode  : Generic remux (no audio bitstream filter)' }
 Write-Host ''
 
-# TRIAGE REMUX (no re-encode)
-$ffArgs = @(
-  '-hide_banner','-y',
-  '-fflags','+genpts',
-  '-err_detect','ignore_err',
-  '-probesize','100M','-analyzeduration','100M',
-  '-ignore_unknown','-copy_unknown',
-  '-i', $inPath,
-  '-map','0','-map_metadata','0','-map_chapters','0',
-  '-c','copy',
-  '-start_at_zero',
-  '-max_interleave_delta','0'
-)
-
-if ($needAacBsf) { $ffArgs += @('-bsf:a','aac_adtstoasc') }
-$ffArgs += $outPath
-
-$LASTEXITCODE = 0
-& ffmpeg @ffArgs
-if ($LASTEXITCODE -ne 0) { throw "Triage remux failed with exit code $LASTEXITCODE." }
+Invoke-TriageRemux -InputPath $inPath -OutputPath $outPath -NeedAacBsf $needAacBsf
 
 Write-Host ''
 Write-Host 'SUCCESS.'
 Write-Host ''
 
-# POST-MORTEM VERIFY with hwaccel fallback (keep audio validation)
 Write-Host 'Running post-mortem verification pass...'
+$durUs = Get-FormatDurationUs $outPath
 
-$durSec = Get-FormatDurationSec $outPath
-$durUs  = if ($durSec -gt 0) { [int64]($durSec * 1000000) } else { 0 }
+$verifyResult = Invoke-Verification -OutPath $outPath -LogPath $logPath -DurUs $durUs
 
-# Check hardware
-
-# --- Determine available hardware acceleration methods ---
-$availableHw = Get-FfmpegHwaccels
-
-# IMPORTANT: each entry must be a 2-item array: @($hwaccel, $outputFormat)
-$verifyCandidates = @()
-
-if ($availableHw -contains "d3d11va") { $verifyCandidates += ,@("d3d11va", $null) }
-if ($availableHw -contains "cuda")    { $verifyCandidates += ,@("cuda",    "cuda") }
-if ($availableHw -contains "qsv")     { $verifyCandidates += ,@("qsv",     $null) }
-
-# Always add CPU fallback as a *pair*
-$verifyCandidates += ,@($null, $null)
-
-
-
-$verifyExit = $null
-$used = 'CPU'
-
-foreach ($c in $verifyCandidates) {
-  if ($null -eq $c -or $c.Count -lt 2) { continue }
-
-  $hw  = $c[0]
-  $fmt = $c[1]
-
-  if ($hw) { Write-Host "Verify decode: trying hwaccel=$hw" }
-  else     { Write-Host 'Verify decode: trying CPU' }
-
-  $verifyExit = Run-Verify -outPath $outPath -logPath $logPath -durUs $durUs -hwaccel $hw -hwoutfmt $fmt
-
-  if ($verifyExit -eq 0) {
-    $used = if ($hw) { $hw } else { 'CPU' }
-    break
-  }
-
-  if ($hw) {
-    # hwaccel attempt failed; discard this attempt's log and try next
-    Remove-Item -LiteralPath $logPath -Force -ErrorAction SilentlyContinue
-    Start-Sleep -Milliseconds 100
-    continue
-  } else {
-    break
-  }
-}
-
-Write-Host "Verification completed using: $used"
+Write-Host "Verification completed using: $($verifyResult.Used)"
 Write-Host "Verification log saved to `"$logPath`""
 
-# Log evaluation & rename verdict
 $harmlessPatterns = @(
   'timestamp discontinuity',
   'non-monotonous dts',
@@ -342,49 +521,6 @@ $harmlessPatterns = @(
   'start time .* not set'
 )
 
-$baseLog = [System.IO.Path]::Combine(
-  [System.IO.Path]::GetDirectoryName($outPath),
-  [System.IO.Path]::GetFileNameWithoutExtension($outPath)
-)
-
-
-$logLines = @()
-try {
-  if (Test-Path -LiteralPath $logPath) {
-    $logLines = Get-Content -LiteralPath $logPath -ErrorAction Stop
-  }
-} catch { $logLines = @() }
-
-$meaningfulLines = @($logLines | Where-Object {
-  $line = $_
-  -not ($harmlessPatterns | Where-Object { $line -match $_ })
-})
-
-if ($verifyExit -ne 0) {
-  $newLog = "${baseLog}_WITHERRORS.log"
-  if (Test-Path -LiteralPath $logPath) {
-    Move-Item -LiteralPath $logPath -Destination $newLog -Force
-  } else {
-    New-Item -Path $newLog -ItemType File -Force | Out-Null
-  }
-  Write-Host "Verification failed (exit $verifyExit)."
-  Write-Host "Log renamed to: `"$newLog`""
-  exit $verifyExit
-}
-
-if ($meaningfulLines.Count -eq 0) {
-  $newLog = "${baseLog}_NOERRORS.log"
-  Move-Item -LiteralPath $logPath -Destination $newLog -Force
-  Write-Host 'The file seems clean (only harmless warnings, if any).'
-  Write-Host "Log renamed to: `"$newLog`""
-} else {
-  $newLog = "${baseLog}_WITHERRORS.log"
-  Move-Item -LiteralPath $logPath -Destination $newLog -Force
-  Write-Host 'Verification produced meaningful warnings/errors.'
-  Write-Host "Log renamed to: `"$newLog`""
-  Write-Host ''
-  Write-Host 'First issues detected:'
-  $meaningfulLines | Select-Object -First 8 | ForEach-Object { Write-Host "  $_" }
-}
+Finalize-VerificationLog -VerifyExit $verifyResult.ExitCode -LogPath $logPath -OutPath $outPath -HarmlessPatterns $harmlessPatterns
 
 exit 0
