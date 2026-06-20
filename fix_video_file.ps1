@@ -402,6 +402,7 @@ function Get-VerifyCandidates([string[]]$AvailableHw) {
 
   $candidates = @()
   if ($AvailableHw -contains 'cuda')    { $candidates += ,@('cuda',    'cuda') }
+  if ($AvailableHw -contains 'd3d12va') { $candidates += ,@('d3d12va', $null) }
   if ($AvailableHw -contains 'd3d11va') { $candidates += ,@('d3d11va', $null) }
   if ($AvailableHw -contains 'qsv')     { $candidates += ,@('qsv',     $null) }
 
